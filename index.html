@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>운영자 0번 — Operator Zero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f0f0f;
+      color: #fff;
+      font-family: 'Nanum Gothic', sans-serif;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      padding: 48px 20px 32px;
+      background: linear-gradient(180deg, #1a1a2e 0%, #0f0f0f 100%);
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .header .subtitle {
+      font-size: 0.8rem;
+      color: #666;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .header .tagline {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.8;
+    }
+    .episode-list {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .episode-list h2 {
+      font-size: 0.8rem;
+      color: #555;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #222;
+    }
+    .episode-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.2s;
+    }
+    .episode-card:hover {
+      background: #222;
+      border-color: #444;
+      transform: translateX(4px);
+    }
+    .episode-card .thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      background: #333;
+    }
+    .episode-card .info .ep-num {
+      font-size: 0.75rem;
+      color: #666;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .episode-card .info .ep-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .episode-card .info .ep-desc {
+      font-size: 0.8rem;
+      color: #777;
+      line-height: 1.5;
+    }
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #444;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="subtitle">Webtoon Series</div>
+    <h1>운영자 0번</h1>
+    <div class="tagline">
+      RF 온라인 운영팀 매니저 김진명.<br>
+      그녀가 기억하지 못하는 것들이 있다.
+    </div>
+  </div>
+
+  <div class="episode-list">
+    <h2>Episodes</h2>
+
+    <a href="output/EP01/EP01.html" class="episode-card">
+      <img class="thumb" src="output/EP01/images/EP01_panel_01.png" alt="EP01 썸네일">
+      <div class="info">
+        <div class="ep-num">EP. 01</div>
+        <div class="ep-title">균열</div>
+        <div class="ep-desc">오늘도 서버는 돌아간다. 그리고 나도.</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    운영자 0번 © 2026
+  </div>
+</body>
+</html>

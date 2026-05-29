@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>운영자 0번 EP01: 균열</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f0f0f;
+      color: #fff;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
+    .webtoon-header {
+      text-align: center;
+      padding: 24px 20px 16px;
+      background: #1a1a1a;
+      border-bottom: 2px solid #333;
+    }
+    .webtoon-header .series-title {
+      font-size: 0.85rem;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .webtoon-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .episode-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0;
+    }
+    .panel-row {
+      display: flex;
+      width: 100%;
+      align-items: flex-start;
+    }
+    .panel {
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .panel.full { width: 100%; }
+    .panel.half { width: 50%; }
+    .panel.small { width: 33.333%; }
+    .panel img {
+      width: 100%;
+      display: block;
+    }
+
+    /* 말풍선 공통 */
+    .bubble {
+      position: absolute;
+      background: white;
+      color: #111;
+      padding: 8px 14px;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size: 13px;
+      max-width: 45%;
+      word-break: keep-all;
+      line-height: 1.6;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+    .bubble.speech   { border-radius: 14px; }
+    .bubble.thought  { border-radius: 50%; font-style: italic; background: #f0f0f0; }
+    .bubble.narration {
+      border-radius: 0;
+      background: rgba(10,10,10,0.88);
+      color: #ddd;
+      border: 1px solid #555;
+      font-size: 12px;
+      max-width: 90%;
+    }
+
+    /* 위치 */
+    .top-left    { top: 4%; left: 3%; }
+    .top-right   { top: 4%; right: 3%; }
+    .top-center  { top: 4%; left: 50%; transform: translateX(-50%); }
+    .bottom-left  { bottom: 4%; left: 3%; }
+    .bottom-right { bottom: 4%; right: 3%; }
+    .bottom-center {
+      bottom: 4%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+    .sfx {
+      position: absolute;
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 2px 2px 0 #000;
+      z-index: 10;
+    }
+
+    /* 네비게이션 */
+    .episode-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-top: 1px solid #333;
+    }
+    .episode-nav a {
+      color: #aaa;
+      text-decoration: none;
+      padding: 10px 22px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .episode-nav a:hover { background: #2a2a2a; color: #fff; }
+  </style>
+</head>
+<body>
+
+<div class="webtoon-header">
+  <div class="series-title">운영자 0번 — Operator Zero</div>
+  <h1>EP.01 &nbsp; 균열</h1>
+</div>
+
+<div class="episode-container">
+
+  <!-- 패널 1: 타이틀컷 — 야간 오피스 전경 -->
+  <div class="panel-row">
+    <div class="panel full">
+      <img src="images/EP01_panel_01.png" alt="패널 1 — 야간 오피스 건물">
+      <div class="bubble narration top-center">RF 온라인 서비스 9년차. 오늘도 서버는 돌아간다.</div>
+      <div class="bubble narration bottom-center">그리고 나도.</div>
+    </div>
+  </div>
+
+  <!-- 패널 2~3: 진명 민원처리 / 이서준 등장 -->
+  <div class="panel-row">
+    <div class="panel half">
+      <img src="images/EP01_panel_02.png" alt="패널 2 — 진명 민원처리">
+      <div class="bubble thought top-right">유저 아이디 정지 처리... 완료.</div>
+      <div class="sfx" style="bottom:5%;left:5%">딸깍</div>
+    </div>
+    <div class="panel half">
+      <img src="images/EP01_panel_03.png" alt="패널 3 — 이서준 등장">
+      <div class="bubble speech top-left">진명 씨, 또 야근이에요? 커피 한 잔—</div>
+      <div class="bubble speech bottom-right">됐어요. 30분 안에 끝낼 거니까.</div>
+    </div>
+  </div>
+
+  <!-- 패널 4: 왕관 이미지 화면 -->
+  <div class="panel-row">
+    <div class="panel full">
+      <img src="images/EP01_panel_04.png" alt="패널 4 — 왕관 업데이트 화면">
+      <div class="bubble narration top-left">이번 업데이트 검수가 남았지.</div>
+    </div>
+  </div>
+
+  <!-- 패널 5: 데자뷔 클로즈업 -->
+  <div class="panel-row">
+    <div class="panel full">
+      <img src="images/EP01_panel_05.png" alt="패널 5 — 진명 눈 클로즈업">
+      <div class="bubble thought bottom-center">...이건.</div>
+    </div>
+  </div>
+
+  <!-- 패널 6~7: 귀걸이 + 문양 비교 -->
+  <div class="panel-row">
+    <div class="panel half">
+      <img src="images/EP01_panel_06.png" alt="패널 6 — 귀걸이 클로즈업">
+      <div class="bubble thought top-right">왜 자꾸...</div>
+    </div>
+    <div class="panel half">
+      <img src="images/EP01_panel_07.png" alt="패널 7 — 귀걸이 vs 왕관 문양">
+    </div>
+  </div>
+
+  <!-- 패널 8: 플래시백 — 고대 왕국 -->
+  <div class="panel-row">
+    <div class="panel full">
+      <img src="images/EP01_panel_08.png" alt="패널 8 — 고대 왕국 플래시백">
+      <div class="bubble narration top-center">—어디선가 본 적 있다.</div>
+      <div class="sfx" style="bottom:8%;right:5%">우르르릉...</div>
+    </div>
+  </div>
+
+  <!-- 패널 9: 정신 차리는 진명 -->
+  <div class="panel-row">
+    <div class="panel full">
+      <img src="images/EP01_panel_09.png" alt="패널 9 — 화들짝 놀라는 진명">
+      <div class="bubble speech top-left">진명 씨? 왜 그래요, 갑자기.</div>
+      <div class="bubble speech bottom-right">...아무것도 아니에요. 눈이 좀 피로해서.</div>
+    </div>
+  </div>
+
+  <!-- 패널 10: 거울 앞 엔딩 -->
+  <div class="panel-row">
+    <div class="panel full">
+      <img src="images/EP01_panel_10.png" alt="패널 10 — 거울 앞 진명">
+      <div class="bubble thought bottom-center">...이상하다.</div>
+      <div class="bubble narration" style="top:4%;right:3%">다음 화에 계속</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="episode-nav">
+  <a href="../index.html">← 목록</a>
+  <span style="color:#555;font-size:0.85rem">EP.01 / 균열</span>
+  <a href="#" style="opacity:0.3;cursor:default">다음화 →</a>
+</div>
+
+</body>
+</html>
