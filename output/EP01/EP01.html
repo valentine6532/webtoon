@@ -3,219 +3,321 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>운영자 0번 EP01: 균열</title>
+  <title>흑영 EP01 - 주인을 베는 칼끝</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #0f0f0f;
-      color: #fff;
-      font-family: 'Nanum Gothic', sans-serif;
+      background: #070707;
+      color: #f4f1ec;
+      font-family: "Nanum Gothic", system-ui, sans-serif;
     }
     .webtoon-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      padding: 16px 20px 14px;
       text-align: center;
-      padding: 24px 20px 16px;
-      background: #1a1a1a;
-      border-bottom: 2px solid #333;
+      background: rgba(12, 11, 11, 0.94);
+      border-bottom: 1px solid #2b2524;
+      backdrop-filter: blur(10px);
     }
-    .webtoon-header .series-title {
-      font-size: 0.85rem;
-      color: #888;
+    .series-title {
+      color: #9f8b7d;
+      font-size: 0.74rem;
+      font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
-    .webtoon-header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
+    h1 {
+      font-size: clamp(1.28rem, 4vw, 1.82rem);
+      line-height: 1.28;
+      font-weight: 800;
     }
     .episode-container {
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 0;
-    }
-    .panel-row {
-      display: flex;
-      width: 100%;
-      align-items: flex-start;
+      background: #050505;
     }
     .panel {
       position: relative;
-      overflow: hidden;
       line-height: 0;
+      overflow: hidden;
+      border-bottom: 12px solid #050505;
     }
-    .panel.full { width: 100%; }
-    .panel.half { width: 50%; }
-    .panel.small { width: 33.333%; }
     .panel img {
       width: 100%;
       display: block;
     }
-
-    /* 말풍선 공통 */
-    .bubble {
+    .bubble, .sfx {
       position: absolute;
-      background: white;
-      color: #111;
-      padding: 8px 14px;
-      font-family: 'Nanum Gothic', sans-serif;
-      font-size: 13px;
-      max-width: 45%;
+      z-index: 10;
+      line-height: 1.55;
       word-break: keep-all;
-      line-height: 1.6;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-      z-index: 10;
+      overflow-wrap: anywhere;
     }
-    .bubble.speech   { border-radius: 14px; }
-    .bubble.thought  { border-radius: 50%; font-style: italic; background: #f0f0f0; }
+    .bubble {
+      max-width: min(72%, 520px);
+      padding: 9px 14px;
+      color: #15120f;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 13px;
+      font-size: clamp(12px, 2.5vw, 15px);
+      font-weight: 700;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.38);
+    }
     .bubble.narration {
-      border-radius: 0;
-      background: rgba(10,10,10,0.88);
-      color: #ddd;
-      border: 1px solid #555;
-      font-size: 12px;
-      max-width: 90%;
+      color: #f3ede6;
+      background: rgba(10, 9, 8, 0.88);
+      border-color: rgba(183, 67, 55, 0.65);
+      border-radius: 4px;
+      font-weight: 700;
     }
-
-    /* 위치 */
-    .top-left    { top: 4%; left: 3%; }
-    .top-right   { top: 4%; right: 3%; }
-    .top-center  { top: 4%; left: 50%; transform: translateX(-50%); }
-    .bottom-left  { bottom: 4%; left: 3%; }
-    .bottom-right { bottom: 4%; right: 3%; }
-    .bottom-center {
-      bottom: 4%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-
     .sfx {
-      position: absolute;
-      font-size: 20px;
-      font-weight: 900;
       color: #fff;
-      text-shadow: 2px 2px 0 #000;
-      z-index: 10;
+      font-size: clamp(18px, 5vw, 34px);
+      font-weight: 800;
+      text-shadow: 2px 2px 0 #000, 0 0 12px rgba(156, 16, 21, 0.8);
+      letter-spacing: 0;
     }
-
-    /* 네비게이션 */
+    .top-left { top: 5%; left: 4%; }
+    .top-right { top: 5%; right: 4%; }
+    .top-center { top: 5%; left: 50%; transform: translateX(-50%); }
+    .middle-left { top: 43%; left: 4%; }
+    .middle-right { top: 43%; right: 4%; }
+    .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .bottom-left { bottom: 6%; left: 4%; }
+    .bottom-right { bottom: 6%; right: 4%; }
+    .bottom-center { bottom: 6%; left: 50%; transform: translateX(-50%); }
     .episode-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 20px;
-      max-width: 800px;
+      gap: 14px;
+      max-width: 820px;
       margin: 0 auto;
-      border-top: 1px solid #333;
+      padding: 26px 20px 34px;
+      background: #090909;
+      border-top: 1px solid #2b2524;
+    }
+    .episode-nav a,
+    .episode-nav span {
+      color: #c4b8ae;
+      font-size: 0.88rem;
     }
     .episode-nav a {
-      color: #aaa;
       text-decoration: none;
-      padding: 10px 22px;
-      border: 1px solid #444;
+      border: 1px solid #453a38;
       border-radius: 6px;
-      font-size: 0.9rem;
-      transition: all 0.2s;
+      padding: 10px 16px;
+      background: #151313;
     }
-    .episode-nav a:hover { background: #2a2a2a; color: #fff; }
+    .episode-nav a:hover {
+      border-color: #8e3838;
+      background: #211918;
+    }
+    @media (max-width: 560px) {
+      .webtoon-header { padding: 12px 14px; }
+      .bubble {
+        max-width: 82%;
+        padding: 7px 10px;
+      }
+      .episode-nav {
+        padding: 22px 14px 30px;
+      }
+    }
   </style>
 </head>
 <body>
+  <header class="webtoon-header">
+    <div class="series-title">흑영</div>
+    <h1>EP.01 주인을 베는 칼끝</h1>
+  </header>
 
-<div class="webtoon-header">
-  <div class="series-title">운영자 0번 — Operator Zero</div>
-  <h1>EP.01 &nbsp; 균열</h1>
-</div>
+  <main class="episode-container" id="episode"></main>
 
-<div class="episode-container">
+  <nav class="episode-nav">
+    <a href="../../index.html">목록</a>
+    <span>EP.01 / 40컷</span>
+    <a href="#" aria-disabled="true" style="opacity:.38; pointer-events:none;">다음화</a>
+  </nav>
 
-  <!-- 패널 1: 타이틀컷 — 야간 오피스 전경 -->
-  <div class="panel-row">
-    <div class="panel full">
-      <img src="images/EP01_panel_01.png" alt="패널 1 — 야간 오피스 건물">
-      <div class="bubble narration top-center">RF 온라인 서비스 9년차. 오늘도 서버는 돌아간다.</div>
-      <div class="bubble narration bottom-center">그리고 나도.</div>
-    </div>
-  </div>
+  <script>
+    const panels = [
+      { n: 1, alt: "십만대산의 밤과 마교 본산", overlays: [
+        ["bubble narration top-center", "십만대산. 그곳의 밤은 사람을 삼킨다."],
+        ["sfx bottom-left", "우우우"]
+      ] },
+      { n: 2, alt: "암살조 훈련장의 어린 후보들", overlays: [
+        ["sfx bottom-right", "뚝... 뚝..."]
+      ] },
+      { n: 3, alt: "교관의 생존 규칙", overlays: [
+        ["bubble top-right", "살고 싶으면 죽이는 법부터 배워라."],
+        ["sfx bottom-left", "철컥"]
+      ] },
+      { n: 4, alt: "어린 흑영의 눈", overlays: [
+        ["bubble narration bottom-center", "나는 이름보다 번호로 먼저 불렸다."]
+      ] },
+      { n: 5, alt: "목검을 쥔 어린 흑영", overlays: [
+        ["sfx bottom-right", "끼익"]
+      ] },
+      { n: 6, alt: "첫 살수 훈련", overlays: [
+        ["bubble top-left", "피하지 마라. 죽일 틈을 봐라."],
+        ["sfx bottom-right", "퍽"]
+      ] },
+      { n: 7, alt: "성인이 된 흑영", overlays: [
+        ["sfx bottom-left", "촤악"]
+      ] },
+      { n: 8, alt: "붉은 임무패", overlays: [
+        ["bubble top-right", "처리해라."],
+        ["sfx bottom-left", "탁"]
+      ] },
+      { n: 9, alt: "비 오는 객잔의 첫 표적", overlays: [
+        ["bubble top-right", "이 밤은 이상하군."],
+        ["sfx bottom-left", "주룩"]
+      ] },
+      { n: 10, alt: "처마 아래 흑영의 실루엣", overlays: [
+        ["sfx bottom-right", "스윽"]
+      ] },
+      { n: 11, alt: "기척을 느낀 표적", overlays: [
+        ["bubble top-left", "누구냐."],
+        ["sfx bottom-right", "딸깍"]
+      ] },
+      { n: 12, alt: "표적의 등 뒤에 나타난 흑영", overlays: [
+        ["bubble bottom-left", "알 필요 없다."],
+        ["sfx top-right", "사악"]
+      ] },
+      { n: 13, alt: "암전과 피 한 줄기", overlays: [
+        ["sfx center", "촥"]
+      ] },
+      { n: 14, alt: "비를 맞으며 단검을 닦는 흑영", overlays: [
+        ["sfx bottom-right", "주룩"]
+      ] },
+      { n: 15, alt: "임무 보고와 다음 명령", overlays: [
+        ["bubble top-left", "다음."],
+        ["bubble bottom-right", "받겠습니다."]
+      ] },
+      { n: 16, alt: "독 내성 훈련", overlays: [
+        ["bubble top-right", "살수는 독보다 독해야 한다."],
+        ["sfx bottom-left", "꿀꺽"]
+      ] },
+      { n: 17, alt: "폭우 속 절벽 수련", overlays: [
+        ["bubble narration top-center", "죽이지 못한 밤은 없었다."],
+        ["sfx bottom-right", "콰아아"]
+      ] },
+      { n: 18, alt: "대나무 숲 경공", overlays: [
+        ["sfx middle-right", "파앗"]
+      ] },
+      { n: 19, alt: "암기술 완성", overlays: [
+        ["sfx bottom-left", "탁탁탁"]
+      ] },
+      { n: 20, alt: "마교 안에 퍼진 흑영의 별명", overlays: [
+        ["bubble top-left", "흑영이라더군."],
+        ["bubble bottom-right", "지나간 자리엔 숨소리도 안 남는다고."]
+      ] },
+      { n: 21, alt: "장로 회의", overlays: [
+        ["bubble top-right", "이번 표적은 다릅니다."]
+      ] },
+      { n: 22, alt: "염라검 진무극 명패", overlays: [
+        ["sfx bottom-left", "탁"]
+      ] },
+      { n: 23, alt: "죽음의 임무를 말하는 귀면장로", overlays: [
+        ["bubble top-center", "이 임무는 실패가 아니라 죽음입니다."],
+        ["sfx bottom-right", "끼익"]
+      ] },
+      { n: 24, alt: "침묵하는 살수들", overlays: [
+        ["bubble narration bottom-center", "..."]
+      ] },
+      { n: 25, alt: "한 걸음 앞으로 나온 흑영", overlays: [
+        ["bubble top-left", "위치는."],
+        ["sfx bottom-right", "저벅"]
+      ] },
+      { n: 26, alt: "비 내리는 정자의 진무극", overlays: [
+        ["bubble top-right", "비가 칼 냄새를 데려왔군."],
+        ["sfx bottom-left", "주룩"]
+      ] },
+      { n: 27, alt: "정자 기둥 그림자 속 흑영", overlays: [
+        ["sfx bottom-right", "스스스"]
+      ] },
+      { n: 28, alt: "흑영을 간파한 진무극", overlays: [
+        ["bubble top-left", "너무 늦었다."],
+        ["sfx bottom-right", "달칵"]
+      ] },
+      { n: 29, alt: "손가락 두 개에 막힌 단검", overlays: [
+        ["sfx center", "캉"]
+      ] },
+      { n: 30, alt: "진무극의 검기 폭발", overlays: [
+        ["bubble top-right", "살수치고는 칼이 정직하군."],
+        ["sfx bottom-left", "콰앙"]
+      ] },
+      { n: 31, alt: "피를 뱉고 일어나는 흑영", overlays: [
+        ["bubble bottom-left", "정직한 건 칼뿐이다."],
+        ["sfx top-right", "툭"]
+      ] },
+      { n: 32, alt: "그림자와 독과 암기가 겹치는 결투", overlays: [
+        ["sfx bottom-right", "파파팟"]
+      ] },
+      { n: 33, alt: "독가루를 밀어내는 진무극", overlays: [
+        ["bubble top-right", "잔재주가 많구나."],
+        ["sfx bottom-left", "후웅"]
+      ] },
+      { n: 34, alt: "독침을 심는 흑영", overlays: [
+        ["sfx center", "푹"]
+      ] },
+      { n: 35, alt: "함정을 깨달은 진무극", overlays: [
+        ["bubble top-left", "...처음부터?"],
+        ["sfx bottom-right", "삐걱"]
+      ] },
+      { n: 36, alt: "마지막 일격", overlays: [
+        ["bubble top-right", "암살은 싸움이 아니다."],
+        ["sfx bottom-left", "촤악"]
+      ] },
+      { n: 37, alt: "쓰러지는 진무극", overlays: [
+        ["bubble top-left", "마교가... 괴물을 길렀군."],
+        ["sfx bottom-right", "털썩"]
+      ] },
+      { n: 38, alt: "마교 회의장 성공 보고", overlays: [
+        ["bubble top-center", "염라검 진무극, 사망했습니다."],
+        ["sfx bottom-left", "술렁"]
+      ] },
+      { n: 39, alt: "교주에게 보고하는 귀면장로", overlays: [
+        ["bubble bottom-center", "이제 저자는 칼이 아닙니다. 교주님을 향할 칼끝입니다."],
+        ["sfx top-right", "고오오"]
+      ] },
+      { n: 40, alt: "제거 명령을 내리는 혈마교주", overlays: [
+        ["bubble center", "부러뜨려라."],
+        ["sfx bottom-right", "탁"]
+      ] }
+    ];
 
-  <!-- 패널 2~3: 진명 민원처리 / 이서준 등장 -->
-  <div class="panel-row">
-    <div class="panel half">
-      <img src="images/EP01_panel_02.png" alt="패널 2 — 진명 민원처리">
-      <div class="bubble thought top-right">유저 아이디 정지 처리... 완료.</div>
-      <div class="sfx" style="bottom:5%;left:5%">딸깍</div>
-    </div>
-    <div class="panel half">
-      <img src="images/EP01_panel_03.png" alt="패널 3 — 이서준 등장">
-      <div class="bubble speech top-left">진명 씨, 또 야근이에요? 커피 한 잔—</div>
-      <div class="bubble speech bottom-right">됐어요. 30분 안에 끝낼 거니까.</div>
-    </div>
-  </div>
+    const episode = document.getElementById("episode");
+    const fragment = document.createDocumentFragment();
 
-  <!-- 패널 4: 왕관 이미지 화면 -->
-  <div class="panel-row">
-    <div class="panel full">
-      <img src="images/EP01_panel_04.png" alt="패널 4 — 왕관 업데이트 화면">
-      <div class="bubble narration top-left">이번 업데이트 검수가 남았지.</div>
-    </div>
-  </div>
+    panels.forEach((panel) => {
+      const section = document.createElement("section");
+      section.className = "panel";
 
-  <!-- 패널 5: 데자뷔 클로즈업 -->
-  <div class="panel-row">
-    <div class="panel full">
-      <img src="images/EP01_panel_05.png" alt="패널 5 — 진명 눈 클로즈업">
-      <div class="bubble thought bottom-center">...이건.</div>
-    </div>
-  </div>
+      const img = document.createElement("img");
+      img.src = `images/EP01_panel_${String(panel.n).padStart(2, "0")}.png`;
+      img.alt = panel.alt;
+      img.loading = panel.n <= 3 ? "eager" : "lazy";
+      section.appendChild(img);
 
-  <!-- 패널 6~7: 귀걸이 + 문양 비교 -->
-  <div class="panel-row">
-    <div class="panel half">
-      <img src="images/EP01_panel_06.png" alt="패널 6 — 귀걸이 클로즈업">
-      <div class="bubble thought top-right">왜 자꾸...</div>
-    </div>
-    <div class="panel half">
-      <img src="images/EP01_panel_07.png" alt="패널 7 — 귀걸이 vs 왕관 문양">
-    </div>
-  </div>
+      panel.overlays.forEach(([className, text]) => {
+        const item = document.createElement("div");
+        item.className = className;
+        item.textContent = text;
+        section.appendChild(item);
+      });
 
-  <!-- 패널 8: 플래시백 — 고대 왕국 -->
-  <div class="panel-row">
-    <div class="panel full">
-      <img src="images/EP01_panel_08.png" alt="패널 8 — 고대 왕국 플래시백">
-      <div class="bubble narration top-center">—어디선가 본 적 있다.</div>
-      <div class="sfx" style="bottom:8%;right:5%">우르르릉...</div>
-    </div>
-  </div>
+      fragment.appendChild(section);
+    });
 
-  <!-- 패널 9: 정신 차리는 진명 -->
-  <div class="panel-row">
-    <div class="panel full">
-      <img src="images/EP01_panel_09.png" alt="패널 9 — 화들짝 놀라는 진명">
-      <div class="bubble speech top-left">진명 씨? 왜 그래요, 갑자기.</div>
-      <div class="bubble speech bottom-right">...아무것도 아니에요. 눈이 좀 피로해서.</div>
-    </div>
-  </div>
-
-  <!-- 패널 10: 거울 앞 엔딩 -->
-  <div class="panel-row">
-    <div class="panel full">
-      <img src="images/EP01_panel_10.png" alt="패널 10 — 거울 앞 진명">
-      <div class="bubble thought bottom-center">...이상하다.</div>
-      <div class="bubble narration" style="top:4%;right:3%">다음 화에 계속</div>
-    </div>
-  </div>
-
-</div>
-
-<div class="episode-nav">
-  <a href="../index.html">← 목록</a>
-  <span style="color:#555;font-size:0.85rem">EP.01 / 균열</span>
-  <a href="#" style="opacity:0.3;cursor:default">다음화 →</a>
-</div>
-
+    episode.appendChild(fragment);
+  </script>
 </body>
 </html>

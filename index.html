@@ -3,131 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>운영자 0번 — Operator Zero</title>
+  <title>흑영 - 주인을 베는 칼끝</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #0f0f0f;
-      color: #fff;
-      font-family: 'Nanum Gothic', sans-serif;
       min-height: 100vh;
+      background: #08090b;
+      color: #f4f1ec;
+      font-family: "Nanum Gothic", system-ui, sans-serif;
     }
     .header {
+      padding: 52px 20px 34px;
       text-align: center;
-      padding: 48px 20px 32px;
-      background: linear-gradient(180deg, #1a1a2e 0%, #0f0f0f 100%);
-      border-bottom: 1px solid #2a2a2a;
+      background:
+        linear-gradient(180deg, rgba(74, 9, 14, 0.72), rgba(8, 9, 11, 0.98)),
+        url("output/EP01/images/EP01_panel_01.png") center 38% / cover;
+      border-bottom: 1px solid #2e2525;
+      position: relative;
     }
-    .header .subtitle {
-      font-size: 0.8rem;
-      color: #666;
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.58);
+    }
+    .header > * {
+      position: relative;
+      z-index: 1;
+    }
+    .subtitle {
+      color: #c8a468;
+      font-size: 0.78rem;
+      font-weight: 800;
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 12px;
     }
-    .header h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      line-height: 1.16;
+      font-weight: 800;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.7);
     }
-    .header .tagline {
-      font-size: 0.9rem;
-      color: #888;
+    .tagline {
+      max-width: 720px;
+      margin: 14px auto 0;
+      color: #d8d0c6;
+      font-size: 0.96rem;
       line-height: 1.8;
     }
     .episode-list {
-      max-width: 800px;
-      margin: 40px auto;
+      max-width: 860px;
+      margin: 36px auto;
       padding: 0 20px;
     }
-    .episode-list h2 {
-      font-size: 0.8rem;
-      color: #555;
+    .section-title {
+      color: #8f8176;
+      font-size: 0.78rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-bottom: 20px;
       padding-bottom: 12px;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid #262222;
+      margin-bottom: 18px;
     }
     .episode-card {
-      display: flex;
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 18px;
       align-items: center;
-      gap: 20px;
       padding: 16px;
-      margin-bottom: 12px;
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 8px;
+      color: inherit;
       text-decoration: none;
-      color: #fff;
-      transition: all 0.2s;
+      background: #151313;
+      border: 1px solid #2d2726;
+      border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
     .episode-card:hover {
-      background: #222;
-      border-color: #444;
+      background: #1d1918;
+      border-color: #6e2c2c;
       transform: translateX(4px);
     }
-    .episode-card .thumb {
-      width: 80px;
-      height: 80px;
+    .thumb {
+      width: 96px;
+      height: 96px;
       object-fit: cover;
-      border-radius: 4px;
-      flex-shrink: 0;
-      background: #333;
+      border-radius: 6px;
+      background: #232323;
     }
-    .episode-card .info .ep-num {
-      font-size: 0.75rem;
-      color: #666;
+    .ep-num {
+      color: #b54747;
+      font-size: 0.76rem;
+      font-weight: 800;
       letter-spacing: 2px;
-      margin-bottom: 4px;
-    }
-    .episode-card .info .ep-title {
-      font-size: 1.05rem;
-      font-weight: 700;
       margin-bottom: 6px;
     }
-    .episode-card .info .ep-desc {
-      font-size: 0.8rem;
-      color: #777;
-      line-height: 1.5;
+    .ep-title {
+      font-size: 1.18rem;
+      font-weight: 800;
+      margin-bottom: 7px;
+    }
+    .ep-desc {
+      color: #a89d95;
+      font-size: 0.88rem;
+      line-height: 1.6;
     }
     .footer {
+      color: #6e6660;
       text-align: center;
-      padding: 40px 20px;
-      color: #444;
-      font-size: 0.8rem;
+      padding: 34px 20px 46px;
+      font-size: 0.82rem;
+    }
+    @media (max-width: 560px) {
+      .episode-card {
+        grid-template-columns: 76px 1fr;
+        gap: 14px;
+      }
+      .thumb {
+        width: 76px;
+        height: 76px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="subtitle">Webtoon Series</div>
-    <h1>운영자 0번</h1>
-    <div class="tagline">
-      RF 온라인 운영팀 매니저 김진명.<br>
-      그녀가 기억하지 못하는 것들이 있다.
-    </div>
-  </div>
+  <header class="header">
+    <div class="subtitle">Dark Murim Webtoon</div>
+    <h1>흑영</h1>
+    <p class="tagline">마교의 칼로 길러진 암살자. 주인을 향할 위협이 된 순간, 그녀는 제거 대상이 된다.</p>
+  </header>
 
-  <div class="episode-list">
-    <h2>Episodes</h2>
-
+  <main class="episode-list">
+    <h2 class="section-title">Episodes</h2>
     <a href="output/EP01/EP01.html" class="episode-card">
-      <img class="thumb" src="output/EP01/images/EP01_panel_01.png" alt="EP01 썸네일">
-      <div class="info">
+      <img class="thumb" src="output/EP01/images/EP01_panel_01.png" alt="1화 썸네일">
+      <div>
         <div class="ep-num">EP. 01</div>
-        <div class="ep-title">균열</div>
-        <div class="ep-desc">오늘도 서버는 돌아간다. 그리고 나도.</div>
+        <div class="ep-title">주인을 베는 칼끝</div>
+        <div class="ep-desc">불가능한 암살에 성공한 흑영. 그 칼끝은 이제 마교의 공포가 된다.</div>
       </div>
     </a>
+  </main>
 
-  </div>
-
-  <div class="footer">
-    운영자 0번 © 2026
-  </div>
+  <footer class="footer">흑영 © 2026</footer>
 </body>
 </html>
