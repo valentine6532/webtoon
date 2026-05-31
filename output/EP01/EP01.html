@@ -52,47 +52,6 @@
       width: 100%;
       display: block;
     }
-    .bubble, .sfx {
-      position: absolute;
-      z-index: 10;
-      line-height: 1.55;
-      word-break: keep-all;
-      overflow-wrap: anywhere;
-    }
-    .bubble {
-      max-width: min(72%, 520px);
-      padding: 9px 14px;
-      color: #15120f;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(0, 0, 0, 0.18);
-      border-radius: 13px;
-      font-size: clamp(12px, 2.5vw, 15px);
-      font-weight: 700;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.38);
-    }
-    .bubble.narration {
-      color: #f3ede6;
-      background: rgba(10, 9, 8, 0.88);
-      border-color: rgba(183, 67, 55, 0.65);
-      border-radius: 4px;
-      font-weight: 700;
-    }
-    .sfx {
-      color: #fff;
-      font-size: clamp(18px, 5vw, 34px);
-      font-weight: 800;
-      text-shadow: 2px 2px 0 #000, 0 0 12px rgba(156, 16, 21, 0.8);
-      letter-spacing: 0;
-    }
-    .top-left { top: 5%; left: 4%; }
-    .top-right { top: 5%; right: 4%; }
-    .top-center { top: 5%; left: 50%; transform: translateX(-50%); }
-    .middle-left { top: 43%; left: 4%; }
-    .middle-right { top: 43%; right: 4%; }
-    .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-    .bottom-left { bottom: 6%; left: 4%; }
-    .bottom-right { bottom: 6%; right: 4%; }
-    .bottom-center { bottom: 6%; left: 50%; transform: translateX(-50%); }
     .episode-nav {
       display: flex;
       justify-content: space-between;
@@ -122,10 +81,6 @@
     }
     @media (max-width: 560px) {
       .webtoon-header { padding: 12px 14px; }
-      .bubble {
-        max-width: 82%;
-        padding: 7px 10px;
-      }
       .episode-nav {
         padding: 22px 14px 30px;
       }
@@ -147,152 +102,7 @@
   </nav>
 
   <script>
-    const panels = [
-      { n: 1, alt: "십만대산의 밤과 마교 본산", overlays: [
-        ["bubble narration top-center", "십만대산. 그곳의 밤은 사람을 삼킨다."],
-        ["sfx bottom-left", "우우우"]
-      ] },
-      { n: 2, alt: "암살조 훈련장의 어린 후보들", overlays: [
-        ["sfx bottom-right", "뚝... 뚝..."]
-      ] },
-      { n: 3, alt: "교관의 생존 규칙", overlays: [
-        ["bubble top-right", "살고 싶으면 죽이는 법부터 배워라."],
-        ["sfx bottom-left", "철컥"]
-      ] },
-      { n: 4, alt: "어린 흑영의 눈", overlays: [
-        ["bubble narration bottom-center", "나는 이름보다 번호로 먼저 불렸다."]
-      ] },
-      { n: 5, alt: "목검을 쥔 어린 흑영", overlays: [
-        ["sfx bottom-right", "끼익"]
-      ] },
-      { n: 6, alt: "첫 살수 훈련", overlays: [
-        ["bubble top-left", "피하지 마라. 죽일 틈을 봐라."],
-        ["sfx bottom-right", "퍽"]
-      ] },
-      { n: 7, alt: "성인이 된 흑영", overlays: [
-        ["sfx bottom-left", "촤악"]
-      ] },
-      { n: 8, alt: "붉은 임무패", overlays: [
-        ["bubble top-right", "처리해라."],
-        ["sfx bottom-left", "탁"]
-      ] },
-      { n: 9, alt: "비 오는 객잔의 첫 표적", overlays: [
-        ["bubble top-right", "이 밤은 이상하군."],
-        ["sfx bottom-left", "주룩"]
-      ] },
-      { n: 10, alt: "처마 아래 흑영의 실루엣", overlays: [
-        ["sfx bottom-right", "스윽"]
-      ] },
-      { n: 11, alt: "기척을 느낀 표적", overlays: [
-        ["bubble top-left", "누구냐."],
-        ["sfx bottom-right", "딸깍"]
-      ] },
-      { n: 12, alt: "표적의 등 뒤에 나타난 흑영", overlays: [
-        ["bubble bottom-left", "알 필요 없다."],
-        ["sfx top-right", "사악"]
-      ] },
-      { n: 13, alt: "암전과 피 한 줄기", overlays: [
-        ["sfx center", "촥"]
-      ] },
-      { n: 14, alt: "비를 맞으며 단검을 닦는 흑영", overlays: [
-        ["sfx bottom-right", "주룩"]
-      ] },
-      { n: 15, alt: "임무 보고와 다음 명령", overlays: [
-        ["bubble top-left", "다음."],
-        ["bubble bottom-right", "받겠습니다."]
-      ] },
-      { n: 16, alt: "독 내성 훈련", overlays: [
-        ["bubble top-right", "살수는 독보다 독해야 한다."],
-        ["sfx bottom-left", "꿀꺽"]
-      ] },
-      { n: 17, alt: "폭우 속 절벽 수련", overlays: [
-        ["bubble narration top-center", "죽이지 못한 밤은 없었다."],
-        ["sfx bottom-right", "콰아아"]
-      ] },
-      { n: 18, alt: "대나무 숲 경공", overlays: [
-        ["sfx middle-right", "파앗"]
-      ] },
-      { n: 19, alt: "암기술 완성", overlays: [
-        ["sfx bottom-left", "탁탁탁"]
-      ] },
-      { n: 20, alt: "마교 안에 퍼진 흑영의 별명", overlays: [
-        ["bubble top-left", "흑영이라더군."],
-        ["bubble bottom-right", "지나간 자리엔 숨소리도 안 남는다고."]
-      ] },
-      { n: 21, alt: "장로 회의", overlays: [
-        ["bubble top-right", "이번 표적은 다릅니다."]
-      ] },
-      { n: 22, alt: "염라검 진무극 명패", overlays: [
-        ["sfx bottom-left", "탁"]
-      ] },
-      { n: 23, alt: "죽음의 임무를 말하는 귀면장로", overlays: [
-        ["bubble top-center", "이 임무는 실패가 아니라 죽음입니다."],
-        ["sfx bottom-right", "끼익"]
-      ] },
-      { n: 24, alt: "침묵하는 살수들", overlays: [
-        ["bubble narration bottom-center", "..."]
-      ] },
-      { n: 25, alt: "한 걸음 앞으로 나온 흑영", overlays: [
-        ["bubble top-left", "위치는."],
-        ["sfx bottom-right", "저벅"]
-      ] },
-      { n: 26, alt: "비 내리는 정자의 진무극", overlays: [
-        ["bubble top-right", "비가 칼 냄새를 데려왔군."],
-        ["sfx bottom-left", "주룩"]
-      ] },
-      { n: 27, alt: "정자 기둥 그림자 속 흑영", overlays: [
-        ["sfx bottom-right", "스스스"]
-      ] },
-      { n: 28, alt: "흑영을 간파한 진무극", overlays: [
-        ["bubble top-left", "너무 늦었다."],
-        ["sfx bottom-right", "달칵"]
-      ] },
-      { n: 29, alt: "손가락 두 개에 막힌 단검", overlays: [
-        ["sfx center", "캉"]
-      ] },
-      { n: 30, alt: "진무극의 검기 폭발", overlays: [
-        ["bubble top-right", "살수치고는 칼이 정직하군."],
-        ["sfx bottom-left", "콰앙"]
-      ] },
-      { n: 31, alt: "피를 뱉고 일어나는 흑영", overlays: [
-        ["bubble bottom-left", "정직한 건 칼뿐이다."],
-        ["sfx top-right", "툭"]
-      ] },
-      { n: 32, alt: "그림자와 독과 암기가 겹치는 결투", overlays: [
-        ["sfx bottom-right", "파파팟"]
-      ] },
-      { n: 33, alt: "독가루를 밀어내는 진무극", overlays: [
-        ["bubble top-right", "잔재주가 많구나."],
-        ["sfx bottom-left", "후웅"]
-      ] },
-      { n: 34, alt: "독침을 심는 흑영", overlays: [
-        ["sfx center", "푹"]
-      ] },
-      { n: 35, alt: "함정을 깨달은 진무극", overlays: [
-        ["bubble top-left", "...처음부터?"],
-        ["sfx bottom-right", "삐걱"]
-      ] },
-      { n: 36, alt: "마지막 일격", overlays: [
-        ["bubble top-right", "암살은 싸움이 아니다."],
-        ["sfx bottom-left", "촤악"]
-      ] },
-      { n: 37, alt: "쓰러지는 진무극", overlays: [
-        ["bubble top-left", "마교가... 괴물을 길렀군."],
-        ["sfx bottom-right", "털썩"]
-      ] },
-      { n: 38, alt: "마교 회의장 성공 보고", overlays: [
-        ["bubble top-center", "염라검 진무극, 사망했습니다."],
-        ["sfx bottom-left", "술렁"]
-      ] },
-      { n: 39, alt: "교주에게 보고하는 귀면장로", overlays: [
-        ["bubble bottom-center", "이제 저자는 칼이 아닙니다. 교주님을 향할 칼끝입니다."],
-        ["sfx top-right", "고오오"]
-      ] },
-      { n: 40, alt: "제거 명령을 내리는 혈마교주", overlays: [
-        ["bubble center", "부러뜨려라."],
-        ["sfx bottom-right", "탁"]
-      ] }
-    ];
+    const panels = Array.from({ length: 40 }, (_, index) => ({ n: index + 1, alt: `흑영 1화 ${index + 1}컷` }));
 
     const episode = document.getElementById("episode");
     const fragment = document.createDocumentFragment();
@@ -307,13 +117,6 @@
       img.loading = panel.n <= 3 ? "eager" : "lazy";
       section.appendChild(img);
 
-      panel.overlays.forEach(([className, text]) => {
-        const item = document.createElement("div");
-        item.className = className;
-        item.textContent = text;
-        section.appendChild(item);
-      });
-
       fragment.appendChild(section);
     });
 
@@ -321,3 +124,4 @@
   </script>
 </body>
 </html>
+
