@@ -17,13 +17,18 @@
       top: 0;
       z-index: 10;
       display: flex;
+      gap: 8px;
       justify-content: center;
+      align-items: center;
       padding: 12px 14px;
       background: #fff;
       border-bottom: 1px solid #eee;
     }
     .episode-select {
-      width: min(420px, 100%);
+      flex: 1 1 260px;
+      width: 100%;
+      max-width: 420px;
+      min-width: 0;
       min-height: 42px;
       padding: 0 12px;
       border: 1px solid #d8dce0;
@@ -32,6 +37,31 @@
       color: #202124;
       font: inherit;
       font-weight: 700;
+    }
+    .share-button {
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid #202124;
+      border-radius: 6px;
+      background: #202124;
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .share-button:focus-visible,
+    .episode-select:focus-visible {
+      outline: 2px solid #1a73e8;
+      outline-offset: 2px;
+    }
+    .share-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
     }
     .episode-container {
       width: min(820px, 100%);
@@ -53,6 +83,8 @@
 <body>
   <header class="toolbar">
     <select class="episode-select" id="episodeSelect" aria-label="Episode"></select>
+    <button class="share-button" id="shareButton" type="button">공유</button>
+    <span class="share-status" id="shareStatus" aria-live="polite"></span>
   </header>
 
   <main class="episode-container" id="episode"></main>
@@ -92,7 +124,31 @@
     ];
 
     const select = document.getElementById("episodeSelect");
+    const shareButton = document.getElementById("shareButton");
+    const shareStatus = document.getElementById("shareStatus");
     const episodeContainer = document.getElementById("episode");
+
+    function findEpisode(id) {
+      return episodes.find((item) => item.id === id) || episodes[0];
+    }
+
+    function getEpisodeIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("episode") || window.location.hash.replace(/^#/, "");
+    }
+
+    function getEpisodeUrl(id) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("episode", id);
+      url.hash = "";
+      return url.toString();
+    }
+
+    function updateUrl(episode, mode = "replace") {
+      const nextUrl = getEpisodeUrl(episode.id);
+      const method = mode === "push" ? "pushState" : "replaceState";
+      window.history[method]({ episodeId: episode.id }, "", nextUrl);
+    }
 
     episodes.forEach((episode) => {
       const option = document.createElement("option");
@@ -101,12 +157,14 @@
       select.appendChild(option);
     });
 
-    function renderEpisode(id) {
-      const episode = episodes.find((item) => item.id === id) || episodes[0];
+    function renderEpisode(id, options = {}) {
+      const episode = findEpisode(id);
+      const { updateHistory = true, historyMode = "replace" } = options;
       const fragment = document.createDocumentFragment();
 
       select.value = episode.id;
       episodeContainer.innerHTML = "";
+      document.title = `${episode.title} | Webtoon Viewer`;
 
       for (let index = 1; index <= episode.panelCount; index += 1) {
         const section = document.createElement("section");
@@ -123,11 +181,39 @@
       }
 
       episodeContainer.appendChild(fragment);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      shareStatus.textContent = "";
+
+      if (updateHistory) {
+        updateUrl(episode, historyMode);
+      }
+
+      window.scrollTo({ top: 0, behavior: historyMode === "push" ? "smooth" : "auto" });
     }
 
-    select.addEventListener("change", (event) => renderEpisode(event.target.value));
-    renderEpisode(episodes[0].id);
+    select.addEventListener("change", (event) => {
+      renderEpisode(event.target.value, { historyMode: "push" });
+    });
+
+    shareButton.addEventListener("click", async () => {
+      const url = getEpisodeUrl(select.value);
+
+      try {
+        await navigator.clipboard.writeText(url);
+        shareStatus.textContent = "공유 링크가 복사되었습니다.";
+        shareButton.textContent = "복사됨";
+        window.setTimeout(() => {
+          shareButton.textContent = "공유";
+        }, 1200);
+      } catch (error) {
+        window.prompt("공유 링크를 복사하세요.", url);
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      renderEpisode(getEpisodeIdFromUrl(), { updateHistory: false });
+    });
+
+    renderEpisode(getEpisodeIdFromUrl());
   </script>
 </body>
 </html>
