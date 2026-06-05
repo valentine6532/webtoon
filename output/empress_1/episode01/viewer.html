@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>두 번째 황비는 죽지 않는다 · 1화 「독배」</title>
+<style>
+  :root { --w: 480px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #14101a; color: #e8e0ec; font-family: "Malgun Gothic", "맑은 고딕", sans-serif; }
+  header { text-align: center; padding: 40px 20px 28px; }
+  header .series { font-size: 14px; letter-spacing: 3px; color: #b08; color: #c98aa8; opacity: .85; }
+  header h1 { font-size: 28px; margin: 10px 0 6px; font-weight: 700;
+    background: linear-gradient(90deg,#e7c27a,#f4dca0,#caa45a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  header .ep { font-size: 15px; color: #9a8fa6; }
+  .strip { max-width: var(--w); margin: 0 auto; display: block; }
+  .strip img { width: 100%; display: block; }
+  footer { text-align: center; padding: 50px 20px 80px; color: #7d7388; }
+  footer .next { display:inline-block; margin-top:14px; padding:12px 28px; border:1px solid #6b5a78;
+    border-radius:30px; color:#d8c8e4; font-size:14px; }
+  .pnum { max-width: var(--w); margin: 0 auto; text-align: right; font-size: 11px; color:#4d4458; padding: 2px 6px; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="series">ROMANCE · FANTASY</div>
+    <h1>두 번째 황비는 죽지 않는다</h1>
+    <div class="ep">1화 — 「독배(毒杯)」</div>
+  </header>
+  <div class="strip" id="strip"></div>
+  <footer>
+    — 1화 끝 —
+    <div class="next">2화에서 계속</div>
+  </footer>
+<script>
+  const N = 14;
+  const strip = document.getElementById('strip');
+  for (let i = 1; i <= N; i++) {
+    const n = String(i).padStart(3, '0');
+    const img = document.createElement('img');
+    img.src = `assets/panel_${n}.png`;
+    img.loading = 'lazy';
+    img.alt = `panel ${n}`;
+    strip.appendChild(img);
+  }
+</script>
+</body>
+</html>
