@@ -4,6 +4,7 @@ _workspace_prev/
 # Node / Vite build
 node_modules/
 dist/
+.vite/
 src/data/catalog.json
 
 # tsc -b artifacts (vite.config is authored in .ts)
