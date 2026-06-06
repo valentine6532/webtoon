@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
     .episode-select {
       flex: 1 1 260px;
       width: 100%;
-      max-width: 420px;
+      max-width: 460px;
       min-width: 0;
       min-height: 42px;
       padding: 0 12px;
@@ -83,49 +83,50 @@
 <body>
   <header class="toolbar">
     <select class="episode-select" id="episodeSelect" aria-label="Episode"></select>
-    <button class="share-button" id="shareButton" type="button">공유</button>
+    <button class="share-button" id="shareButton" type="button">Share</button>
     <span class="share-status" id="shareStatus" aria-live="polite"></span>
   </header>
 
   <main class="episode-container" id="episode"></main>
 
   <script>
+    const range = (start, end) =>
+      Array.from({ length: end - start + 1 }, (_, index) => start + index);
+
     const episodes = [
       {
         id: "ep01",
         title: "EP01",
-        panelCount: 40,
+        panels: range(1, 40),
         src: (number) => `output/EP01/images/EP01_panel_${String(number).padStart(2, "0")}.png`
-      },
-      {
-        id: "hunter-01",
-        title: "Hunter EP.01",
-        panelCount: 40,
-        src: (number) => `output/hunter/episode01/assets/panel_${String(number).padStart(3, "0")}.png`
       },
       {
         id: "mukhon-01",
         title: "Mukhon EP.01",
-        panelCount: 44,
+        panels: range(1, 44),
         src: (number) => `output/mukhon_1/episode01/assets/panel_${String(number).padStart(3, "0")}.png`
       },
       {
         id: "mudang-king-01",
         title: "Mudang King EP.01",
-        panelCount: 64,
+        panels: range(1, 64),
         src: (number) => `output/mudang_king_1/episode01/assets/panel_${String(number).padStart(3, "0")}.png?v=20260604`
       },
       {
         id: "mudang-king-02",
         title: "Mudang King EP.02",
-        panelCount: 61,
+        panels: range(1, 61),
         src: (number) => `output/mudang_king_1/episode02/assets/panel_${String(number).padStart(3, "0")}.png?v=20260605`
       },
       {
-        id: "empress-01",
-        title: "두 번째 황비는 죽지 않는다 EP.01",
-        panelCount: 14,
-        src: (number) => `output/empress_1/episode01/assets/panel_${String(number).padStart(3, "0")}.png`
+        id: "false-crown-01",
+        title: "False Crown EP.01",
+        panels: [
+          ...range(1, 20),
+          ...range(22, 26),
+          ...range(28, 46)
+        ],
+        src: (number) => `output/fake_princess_1/episode01/assets/panel_${String(number).padStart(3, "0")}.png`
       }
     ];
 
@@ -172,19 +173,19 @@
       episodeContainer.innerHTML = "";
       document.title = `${episode.title} | Webtoon Viewer`;
 
-      for (let index = 1; index <= episode.panelCount; index += 1) {
+      episode.panels.forEach((number, index) => {
         const section = document.createElement("section");
         section.className = "panel";
 
         const img = document.createElement("img");
-        img.src = episode.src(index);
-        img.alt = `${episode.title} ${index}`;
-        img.loading = index <= 3 ? "eager" : "lazy";
+        img.src = episode.src(number);
+        img.alt = `${episode.title} panel ${number}`;
+        img.loading = index < 3 ? "eager" : "lazy";
         img.decoding = "async";
 
         section.appendChild(img);
         fragment.appendChild(section);
-      }
+      });
 
       episodeContainer.appendChild(fragment);
       shareStatus.textContent = "";
@@ -205,13 +206,13 @@
 
       try {
         await navigator.clipboard.writeText(url);
-        shareStatus.textContent = "공유 링크가 복사되었습니다.";
-        shareButton.textContent = "복사됨";
+        shareStatus.textContent = "Share link copied.";
+        shareButton.textContent = "Copied";
         window.setTimeout(() => {
-          shareButton.textContent = "공유";
+          shareButton.textContent = "Share";
         }, 1200);
       } catch (error) {
-        window.prompt("공유 링크를 복사하세요.", url);
+        window.prompt("Copy this share link:", url);
       }
     });
 
