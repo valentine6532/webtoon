@@ -1,5 +1,18 @@
 _workspace/
 _workspace_prev/
+
+# Node / Vite build
+node_modules/
+dist/
+src/data/catalog.json
+
+# tsc -b artifacts (vite.config is authored in .ts)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# Pre-rebuild presentation layer, preserved locally (old versions live in git history)
+_legacy/
 output/EP*/images/.codex-imagegen-logs/
 **/.codex-imagegen-logs/
 **/.gen/
