@@ -1,0 +1,2447 @@
+{
+  "metadata": {
+    "title": "거짓의 왕관 — 2화 죽은 왕녀를 살려라",
+    "episode_dir": "workspace/fake_princess_1/episode02",
+    "episode": 2,
+    "panel_count": 46,
+    "style_summary": "여성향 로판. drama_painterly(정제 세미리얼, 1화 동일). 단일 공간(그림의 방)의 정적 대화극 — 손/눈/소품/여백 인서트로 긴장 유지. 붉은 점 물증 비트 회수, 끝 훅: '나는 누구지? …이들은, 그걸 알고 온 걸까.'",
+    "output_dir": "workspace/fake_princess_1/episode02/assets",
+    "text_mode": "integrated_in_image",
+    "image_generation_status": "NOT_GENERATED — 이미지(패널)는 본 단계에서 생성하지 않음. 1화 시트·배경판·style_ref 전부 재사용(신규 생성 없음)."
+  },
+  "style_consistency": {
+    "style_token": "WEBTOON_STYLE_REF",
+    "render_mode": "drama_painterly",
+    "reference_images": [
+      "workspace/fake_princess_1/assets/style_ref_001.png"
+    ],
+    "global_rule": "Every panel is a final Korean webtoon image with integrated speech bubbles, narration boxes, and stylized SFX lettering. Keep consistent line weight, drama_painterly tonal shading, face proportions, lighting, and vertical-scroll composition across panels. 1화와 동일 룩.",
+    "fixed_style_traits": [
+      "painterly comic/manhwa illustration with soft tonal shading and atmospheric depth",
+      "heavier confident inking",
+      "dramatic chiaroscuro built from LARGE readable value shapes",
+      "smooth low-frequency gradients allowed on cloth and background only",
+      "refined semi-real faces, MATTE-ish skin (no plastic/metallic skin sheen)",
+      "cool desaturated palette, SFX/lettering flat 2D ink with no 3D bevel or glow"
+    ],
+    "forbidden_style_changes": [
+      "photorealism or literal 3D / videogame render",
+      "glossy plastic skin",
+      "scattered specular sparkle, glinting speckle highlights, or high-frequency shimmer on metal/silk/jewelry",
+      "blown-out light flash or a field of fine sparks/embers",
+      "dense rain/debris/dust speckle field",
+      "lens bloom blowout, glow halo, rim-light halo",
+      "depth-of-field background blur",
+      "photographic / 3D background plates (background must be flat graphic large color planes with clean linework)"
+    ],
+    "series_style": "cool desaturated romance-fantasy palette — the abandoned palace portrait room in a colder regal hush (dusty light, cold slate and faded gilt); the slum flashback (cut 39) in cold rain-grey/ash-brown; clean medium-thin linework; soft painterly tonal shading; tense, ominous, melodramatic mood with refined faces",
+    "prompt_template": "Korean vertical webtoon panel, drama_painterly render (refined semi-real cel — soft tonal shading + large readable value shapes + confident inking; cool desaturated palette). NOT photorealistic, NOT 3D, no glossy plastic skin, no bloom/glow halo, no depth-of-field blur. Flat graphic webtoon background (large simple color planes with clean linework, NOT a photo, NOT 3D). Follow the attached style reference for the look and the character sheets for identity. Render Korean text clean and correct, no garbled/fake letters, no watermark.",
+    "style_prompt_rule": "Use WEBTOON_STYLE_REF consistently across all panels; only scene, composition, expression, and dialogue change.",
+    "prompt_note": "각 panel.prompt는 'STYLE_GUARD.'로 시작 → 빌드 시 위 prompt_template 원문으로 치환된다. 본 단계는 이미지 미생성."
+  },
+  "character_consistency": {
+    "bible_path": "workspace/fake_princess_1/episode01/02_character_bible.md",
+    "global_rule": "Every panel must reuse the same character identity from the 1화 character sheets. Identity = structure/color only; expression changes per beat. 2화는 신규 인물 없음.",
+    "references": [
+      {
+        "id": "SERA_REF",
+        "name": "세라피나",
+        "slug": "sera",
+        "sheet_path": "workspace/fake_princess_1/character/sera/sheet.png",
+        "expressions_sheet_path": "workspace/fake_princess_1/character/sera/sheet_expressions.png",
+        "face_sheet_path": "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "definition_path": "workspace/fake_princess_1/character/sera/definition.md",
+        "fixed_traits": [
+          "light-chestnut long wavy hair worn loose (unbound)",
+          "amber eyes",
+          "warm ivory skin",
+          "commoner grey-taupe dress and worn dull-beige shawl (ep1 같은 의상)",
+          "a small red mole behind the RIGHT ear (continuity SSOT, same spot as the portrait's mole)"
+        ],
+        "signature_features": [
+          "amber iris",
+          "light-chestnut long wavy hair",
+          "slightly upturned almond eye shape"
+        ],
+        "forbidden_changes": [
+          "no change of hair color",
+          "no change of eye color",
+          "no short hair",
+          "keep age 19"
+        ]
+      },
+      {
+        "id": "RODERICK_REF",
+        "name": "로드릭",
+        "slug": "roderick",
+        "sheet_path": "workspace/fake_princess_1/character/roderick/sheet.png",
+        "expressions_sheet_path": "workspace/fake_princess_1/character/roderick/sheet_expressions.png",
+        "face_sheet_path": "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "definition_path": "workspace/fake_princess_1/character/roderick/definition.md",
+        "fixed_traits": [
+          "dark iron-grey hair (steel grey, not blonde or platinum) combed straight back",
+          "slate blue-grey narrow eyes",
+          "clean-shaven long gaunt face (smooth upper lip, cheeks and chin)",
+          "deep-navy chancellor robe",
+          "holds a brown leather ledger; gloved hand with a house-crest signet ring"
+        ],
+        "signature_features": [
+          "slate blue-grey narrow eyes",
+          "dark iron-grey hair (steel grey, not blonde or platinum) combed straight back",
+          "clean-shaven long gaunt face"
+        ],
+        "forbidden_changes": [
+          "NO beard, NO mustache, NO goatee, NO stubble, NO five-o-clock shadow, NO dark facial-hair texture",
+          "no change of eye color",
+          "keep late-40s age"
+        ]
+      },
+      {
+        "id": "CAMILLA_REF",
+        "name": "카밀라",
+        "slug": "camilla",
+        "sheet_path": "workspace/fake_princess_1/character/camilla/sheet.png",
+        "expressions_sheet_path": "workspace/fake_princess_1/character/camilla/sheet_expressions.png",
+        "face_sheet_path": "workspace/fake_princess_1/character/camilla/sheet_face.png",
+        "definition_path": "workspace/fake_princess_1/character/camilla/definition.md",
+        "fixed_traits": [
+          "dark-umber hair in a tight low knot",
+          "grey-green eyes",
+          "a thin scar above the left mouth corner",
+          "dark leather guard uniform with a thin jian sword at the waist"
+        ],
+        "signature_features": [
+          "grey-green eyes",
+          "dark-umber hair tied in a tight low knot",
+          "thin scar above the left mouth corner"
+        ],
+        "forbidden_changes": [
+          "no loose long hair",
+          "no change of eye color",
+          "never remove the waist sword",
+          "keep 30s age"
+        ]
+      },
+      {
+        "id": "SIBLING_REF",
+        "name": "막내",
+        "slug": "youngest_sibling",
+        "sheet_path": "workspace/fake_princess_1/character/youngest_sibling/sheet.png",
+        "definition_path": "workspace/fake_princess_1/character/youngest_sibling/definition.md",
+        "fixed_traits": [
+          "round toddler face with big eyes",
+          "light-chestnut messy short hair",
+          "patched oversized shirt"
+        ],
+        "signature_features": [
+          "round toddler face with big eyes",
+          "light-chestnut messy short hair",
+          "patched oversized shirt"
+        ],
+        "forbidden_changes": [
+          "keep age 5",
+          "flashback insert only (cut 39)"
+        ]
+      },
+      {
+        "id": "PORTRAIT_ARIADNE",
+        "name": "초상화(아리아드네)",
+        "note": "별도 시트 없음 — SERA_REF face 시트를 참조로 쓰고 prompt에 '가느다란 금관 + 크림 비단 드레스 + 은은한 미소'를 명시. 1화 컷41~46 초상화와 동일 그림. 오른쪽 귀 뒤 작고 붉은 점은 세라의 점과 같은 위치(SSOT). 절대 새 인물로 그리지 말 것.",
+        "uses_sheet_of": "SERA_REF",
+        "fixed_traits": [
+          "SAME FACE as SERA_REF (light-chestnut wavy hair, amber eyes, upturned almond eyes)",
+          "slender pale-gold crown",
+          "cream silk royal gown",
+          "serene faint enigmatic smile (this is a PAINTING)",
+          "a small red mole behind the RIGHT ear, same spot as Sera's"
+        ]
+      }
+    ]
+  },
+  "background_anchors": [
+    {
+      "id": "BG_PORTRAIT_ROOM",
+      "path": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "used_in_cuts": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "landmarks": "dim gallery room; center wall holds one life-size framed portrait lit by a soft shaft of dusty light; cold slate walls, faded gilt frame, dust in the air",
+      "status": "재사용(1화 자산)"
+    },
+    {
+      "id": "BG_SLUM_ROOM",
+      "path": "workspace/fake_princess_1/assets/bg_slum_room.png",
+      "used_in_cuts": [
+        39
+      ],
+      "landmarks": "cramped damp slum room (flashback, blurred warm-cold ash tone); left patched window with grey light",
+      "status": "재사용(1화 자산, 컷39 동생 회상만)"
+    }
+  ],
+  "character_sheets_note": "캐릭터 시트는 1화 episode01/04_art_director_prompts.json에서 이미 정의·생성 대상으로 등록됨. 2화는 동일 시트를 재사용만 하므로 본 파일에는 시트 생성 prompt를 다시 싣지 않는다(신규 생성 없음). 참조 경로는 character_consistency.references / panels[].character_sheet_paths 에 기입.",
+  "character_sheets": [],
+  "panel_prompt_note": "각 panel.prompt는 style_consistency.prompt_template을 머리에 상속한다(prompt의 'STYLE_GUARD.' = 그 템플릿 원문). 실제 이미지 생성 시 prompt_template 원문을 prepend한다. 본 단계는 이미지 미생성. 연속성 고정값: (붉은 점) 컷29·34·35·37·46 = 오른쪽 귀 뒤 같은 자리의 작고 붉은 점. (초상화) 세라 얼굴+가느다란 금관+크림 비단 드레스+은은한 미소, 새 인물 금지. (로드릭) 남색 재상복·뒤로 넘긴 잿빛 머리·slate 눈·clean-shaven. (카밀라) grey-green 눈·입가 흉터·낮게 묶은 짙은 머리.",
+  "panels": [
+    {
+      "panel": 1,
+      "filename": "panel_001.png",
+      "purpose": "silent_afterbeat — 1화 끝을 받는 암전 속 세라 실루엣 + off 로드릭",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "near-black frame, Sera's back silhouette before the portrait",
+        "camera_angle": "eye level from behind",
+        "composition": "almost entirely flat black; only a thin rim of light on the edges; Sera's frozen back silhouette stands before the mirror-like portrait, faint light at the frame edges only",
+        "pacing_role": "받는 컷 / opening afterbeat",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "frozen still posture, held breath"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "negative_space": "dominant flat black field, central bubble space",
+          "framing": "full_bleed",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "이제, 죽은 왕녀를 살려야 한다."
+        }
+      ],
+      "text_layout": "Single rough-ink speech bubble (speaker Roderick, off-frame) centered in the dark, tail pointing off toward the darkness; large surrounding black void.",
+      "prompt": "STYLE_GUARD. Near-black panel: the frame falls almost entirely to flat black, only a thin pale rim of light on the edges; Sera (SERA_REF, light-chestnut wavy hair edge, grey-taupe dress) stands as a frozen back silhouette before the dim mirror-like life-size portrait. Keep the black a flat dark field, NOT a gradient haze, no glow/bloom. A single rough-ink speech bubble (speaker Roderick, off-frame, unseen) centered in the dark reading \"이제, 죽은 왕녀를 살려야 한다.\" tail pointing off toward the darkness, body readable against the black, large void around it. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 2,
+      "filename": "panel_002.png",
+      "purpose": "establishing — 빛 줄기로 들어오는 로드릭(얼굴 첫 정면 노출)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "establishing",
+        "shot": "medium chest-up shot, first full frontal face reveal (face large, NOT a full-body long shot)",
+        "camera_angle": "slight low angle",
+        "composition": "Roderick chest-up in a faint dusty shaft from the high window, deep-navy robe, dark iron-grey hair combed back, gaunt cold face revealed large",
+        "pacing_role": "도입(정체 노출)",
+        "expression": {
+          "beat": "imposing",
+          "face": "composed, slate blue-grey narrow eyes level and cold, mouth a still flat line",
+          "intensity": "subtle",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "stepping forward mid-stride",
+            "dust motes drifting in the shaft",
+            "robe hem moving slightly"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "sfx",
+          "text": "또각"
+        }
+      ],
+      "text_layout": "Small flat-ink SFX '또각' near his foot at the lower panel edge.",
+      "prompt": "STYLE_GUARD. MEDIUM SHOT, chest-up, his FACE LARGE AND PROMINENT (this is his first frontal face reveal — do NOT make it a small full-body long shot): Roderick (RODERICK_REF — dark IRON-GREY hair, steel-grey and NOT blonde, NOT platinum, NOT white, combed straight back; slate blue-grey narrow eyes, clean-shaven smooth gaunt face, deep-navy chancellor robe with gold trim; jaw/neck shadow flat cel only, NO beard/stubble) steps forward into a faint dusty light shaft from a high window of the dim portrait room, his cold composed face revealed frontally for the first time, slight low angle, imposing; behind him the dim portrait room (gold frame, tall window), dust motes drifting. Center band panel, flat white margins; small flat-ink SFX '또각' at the lower edge. Colder regal-hush palette, light as a soft flat shaft, no bloom/glow. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 3,
+      "filename": "panel_003.png",
+      "purpose": "establishing — 문장반지 손 클로즈업(정체 각인)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "establishing",
+        "shot": "tight insert of Roderick's hand — signet ring + ledger edge",
+        "camera_angle": "slight high angle",
+        "composition": "close insert of Roderick's gloved/bare hand, a house-crest signet ring on a finger, the corner of the brown leather ledger, cold metal",
+        "pacing_role": "정체 각인 (power prop)",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "hand resting still, ledger corner catching dim light"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_small",
+          "white_margin": true,
+          "one_focus": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Small framed insert (center, pure flat white #ffffff margins, do NOT fill the margins) of Roderick's (RODERICK_REF) hand resting still — a house-crest signet ring on one finger, the corner of a brown leather ledger beside it, cold pale metal as a controlled flat tonal shape (NO sparkle/speckle). One focus, big readable value shapes, background dropped to flat shadow. Colder regal-hush palette."
+    },
+    {
+      "panel": 4,
+      "filename": "panel_004.png",
+      "purpose": "reaction_closeup — 돌아보는 세라 옆얼굴(경계)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "Sera turning her head from the portrait toward Roderick",
+        "camera_angle": "eye level",
+        "composition": "Sera at the portrait wall slowly turns her head toward Roderick, wary eyes",
+        "pacing_role": "도입",
+        "expression": {
+          "beat": "wariness",
+          "face": "amber eyes narrowed and cutting sideways toward Roderick, eyebrows lowered slightly, lips pressed, chin still half-turned",
+          "intensity": "subtle",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "head just turning",
+            "loose hair strand swaying",
+            "off-center crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Close-up of Sera (keep the SAME person as the sheet — face structure, light-chestnut wavy hair worn loose, amber iris, upturned almond eyes — EXPRESSION changes for this beat): amber eyes narrowed and cutting sideways toward Roderick, eyebrows slightly lowered, lips pressed, head just turning from the portrait wall, a loose hair strand swaying, off-center crop. Center band panel, flat white margins. Colder regal-hush palette."
+    },
+    {
+      "panel": 5,
+      "filename": "panel_005.png",
+      "purpose": "dialogue — 세라 반신, 빛/어둠 경계 + 뒤 카밀라 칼자루 손 실루엣",
+      "character_refs": [
+        "SERA_REF",
+        "CAMILLA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png",
+        "workspace/fake_princess_1/character/camilla/sheet.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Sera half-body at the light/dark boundary, Camilla's hand on sword hilt faint behind",
+        "camera_angle": "eye level",
+        "composition": "Sera asks with a face that holds down its tremor; far behind in the dark, a faint silhouette of Camilla's hand resting on her sword hilt",
+        "pacing_role": "도입",
+        "expression": {
+          "beat": "tension",
+          "face": "amber eyes steady but guarded, brow faintly tight, lips parting to speak, jaw controlled",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "slight body turn",
+            "hair strand"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…살린다니, 무슨 소리예요."
+        }
+      ],
+      "text_layout": "Speech bubble in the lower margin, tail up to Sera.",
+      "prompt": "STYLE_GUARD. Sera half-body (SAME sheet identity; expression changes): amber eyes steady but guarded, brow faintly tight, lips parting to speak, holding down a tremor; she stands at the boundary of the dusty light and the dark. Far behind in the shadow, a faint barely-readable silhouette of Camilla's (CAMILLA_REF) hand resting on a sword hilt at her waist. Center band tall panel, flat white margins; rough-ink speech bubble in the lower margin reading \"…살린다니, 무슨 소리예요.\" tail up to Sera, body mostly attached to the panel edge. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 6,
+      "filename": "panel_006.png",
+      "purpose": "dialogue — 로드릭이 초상화 가리킴(이름 호명)",
+      "character_refs": [
+        "RODERICK_REF",
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick half-body raising a hand toward the portrait, part of the portrait in frame",
+        "camera_angle": "eye level",
+        "composition": "Roderick lifts a hand toward the lit portrait; his half-body plus part of the princess portrait share the frame",
+        "pacing_role": "상승(정보)",
+        "expression": {
+          "beat": "low_weight",
+          "face": "composed grave, slate eyes lowered toward the portrait, calm mouth",
+          "intensity": "subtle",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "raised pointing arm",
+            "slight body lean toward portrait"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "에델리아 왕국의 왕녀, 아리아드네 전하."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF — deep-navy robe, ash-grey slicked-back hair, clean-shaven gaunt face, NO stubble; expression composed and grave, slate eyes lowered) lifts a hand toward the lit life-size portrait. Part of the portrait shares the frame: the princess has the SAME FACE as SERA_REF (light-chestnut wavy hair, amber eyes) wearing a slender pale-gold crown and a cream silk gown, serene faint smile — this is the dead princess's painting, identical to Sera, do NOT draw a new person. Keep faces FLAT-ish painterly cel, no glossy highlights. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"에델리아 왕국의 왕녀, 아리아드네 전하.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 7,
+      "filename": "panel_007.png",
+      "purpose": "establishing — 초상화 상반신(관·드레스), 운명 통보",
+      "character_refs": [
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "establishing",
+        "shot": "upper-body of the portrait — slender crown and cream silk gown, light on the painting",
+        "camera_angle": "slight low angle (reverent)",
+        "composition": "the painted princess's upper body: slender pale-gold crown, cream silk royal gown, a soft shaft of light falling on the painting",
+        "pacing_role": "상승(정보)",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "dust motes in the light shaft"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "보름 뒤, 적국 아르장의 황태자비가 되실 분이었다."
+        }
+      ],
+      "text_layout": "Speech bubble (off-panel Roderick) placed close just above the framed portrait, short tail — NOT floated in an empty top margin (bubble and portrait read together).",
+      "prompt": "STYLE_GUARD. Upper-body of the dead princess's PORTRAIT (this is a PAINTING): SAME FACE as SERA_REF (light-chestnut wavy hair, amber eyes), wearing a slender pale-gold crown and a cream silk royal gown, serene faint enigmatic smile; a soft flat shaft of light falls on the painting, dust motes drifting. Keep face and silk FLAT-ish painterly cel coloring, no glossy highlights, pale-gold crown as a controlled flat tonal shape (NO sparkle). Center band tall panel, flat white margins; rough-ink bubble (speaker Roderick, off-panel) in the top margin reading \"보름 뒤, 적국 아르장의 황태자비가 되실 분이었다.\" tail pointing off toward him. Colder regal-hush palette, no bloom/glow. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 8,
+      "filename": "panel_008.png",
+      "purpose": "reaction_closeup — 초상화 얼굴(세라와 동일), 죽음 통보",
+      "character_refs": [
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "close-up of the portrait's painted face = Sera's face",
+        "camera_angle": "eye level",
+        "composition": "the painted princess's face fills the frame — identical to Sera, faint enigmatic smile",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "serene_painted",
+          "face": "painted serene face, faint enigmatic smile (a PAINTING, not alive)",
+          "intensity": "subtle",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": []
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "한 달 전, 사고로 돌아가셨다."
+        }
+      ],
+      "text_layout": "Speech bubble (speaker Roderick, off-panel) in the lower margin, tail pointing off toward him.",
+      "prompt": "STYLE_GUARD. Close-up of the PAINTED princess face filling the frame — SAME FACE IDENTITY as SERA_REF (light-chestnut wavy hair, amber eyes, upturned almond eyes), wearing a slender pale-gold crown, serene with a faint enigmatic smile; this is a PAINTING, identical to Sera, do NOT draw a new person. Keep face FLAT-ish painterly cel coloring, no glossy highlights. Center band tall panel, flat white margins; rough-ink bubble (speaker Roderick, off-panel) in the lower margin reading \"한 달 전, 사고로 돌아가셨다.\" tail pointing off toward him. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 9,
+      "filename": "panel_009.png",
+      "purpose": "dialogue — 로드릭 클로즈업, 비밀 공유(차가운 경고)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "close-up of Roderick looking straight at Sera",
+        "camera_angle": "eye level",
+        "composition": "Roderick looks straight at Sera, the cold eyes of a dealer with no feeling",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "cold_warning",
+          "face": "slate blue-grey eyes level and emotionless, brow flat, mouth a controlled hard line — a dealer's cold gaze",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "slight off-center crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "아직 아무도 모른다. …알아서도 안 되고."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Close-up of Roderick (RODERICK_REF; keep SAME person, expression changes): slate blue-grey narrow eyes level and emotionless, brow flat, mouth a controlled hard line — a cold dealer's gaze looking straight at Sera; clean-shaven smooth face, jaw shadow flat cel only, NO stubble. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"아직 아무도 모른다. …알아서도 안 되고.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 10,
+      "filename": "panel_010.png",
+      "purpose": "reaction_closeup — 세라 눈, 초상화↔로드릭 시선 이동(분석) + 내레이션",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "tight crop on Sera's eyes flicking between portrait and Roderick",
+        "camera_angle": "eye level",
+        "composition": "Sera's amber eyes dart quickly between the portrait and Roderick, piecing it together",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "analysis",
+          "face": "amber eyes sharp and flicking sideways, pupils quick, one brow faintly raised, mouth a tight calculating line",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "eyes mid-flick",
+            "tight crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "narration",
+          "text": "죽은 신부. 새지 않은 죽음. 그리고 — 내 얼굴."
+        }
+      ],
+      "text_layout": "Tail-less narration caption box on the right margin crossing into the panel.",
+      "prompt": "STYLE_GUARD. Tight crop on Sera's eyes (SAME sheet identity; expression changes for this beat): amber eyes sharp and flicking sideways between the portrait and Roderick, pupils quick, one brow faintly raised, mouth a tight calculating line — piecing it together. Center band panel, flat white margins; a tail-less narration caption box on the right margin reading \"죽은 신부. 새지 않은 죽음. 그리고 — 내 얼굴.\" crossing into the panel. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 11,
+      "filename": "panel_011.png",
+      "purpose": "dialogue — 로드릭 정면, 본론(거래 제시) 2말풍선",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick facing Sera frontally, the point of the blade",
+        "camera_angle": "eye level",
+        "composition": "Roderick faces Sera dead-on, putting the deal on the table, his words now aimed at her",
+        "pacing_role": "상승(거래 제시)",
+        "expression": {
+          "beat": "resolve",
+          "face": "slate eyes fixed and unblinking on Sera, brow level, mouth firm and decisive",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "slight forward set of the shoulders"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "그러니 — 네가 왕녀가 되어 주어야겠다."
+        },
+        {
+          "type": "dialogue",
+          "text": "보름 뒤, 적국의 심장으로."
+        }
+      ],
+      "text_layout": "Two bubbles read top-to-bottom (upper then lower), both tails to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person, expression changes) faces Sera dead-on, slate blue-grey eyes fixed and unblinking, brow level, mouth firm and decisive — putting the deal on the table; deep-navy robe, clean-shaven smooth face, NO stubble. Center band tall panel, flat white margins; TWO rough-ink bubbles read top-to-bottom: upper \"그러니 — 네가 왕녀가 되어 주어야겠다.\" then lower \"보름 뒤, 적국의 심장으로.\" both tails to Roderick, bodies mostly attached to the panel edge. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 12,
+      "filename": "panel_012.png",
+      "purpose": "reaction_closeup — 세라 한 발 물러섬(거절1)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "Sera taking a reflexive half-step back, a warding hand",
+        "camera_angle": "eye level",
+        "composition": "Sera reflexively steps back a half-step, raising a warding hand, blunt commoner refusal",
+        "pacing_role": "상승(반응)",
+        "expression": {
+          "beat": "refusal",
+          "face": "amber eyes widened in alarm, brows up, mouth open in a sharp blunt refusal, chin pulled back",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "half-step back",
+            "warding hand rising into frame",
+            "hair swaying"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "사람 잘못 봤어요. 나는 빈민가에서 나고 자랐어요."
+        }
+      ],
+      "text_layout": "Speech bubble in the lower margin, tail up to Sera.",
+      "prompt": "STYLE_GUARD. Sera (SAME sheet identity; expression changes) takes a reflexive half-step back, a warding hand rising into frame; amber eyes widened in alarm, brows up, mouth open in a blunt sharp refusal, chin pulled back, hair swaying — a commoner's directness. Center band panel, flat white margins; rough-ink bubble in the lower margin reading \"사람 잘못 봤어요. 나는 빈민가에서 나고 자랐어요.\" tail up to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 13,
+      "filename": "panel_013.png",
+      "purpose": "dialogue — 세라 반신, 초상화 가리키며 항변(거절 근거)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Sera half-body pointing at the portrait, brow hardened",
+        "camera_angle": "eye level",
+        "composition": "Sera gestures toward the portrait while protesting, brow knotted",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "protest",
+          "face": "amber eyes urgent and direct, brow knotted, mouth mid-protest, a hand thrown toward the portrait",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "arm gesturing toward the portrait",
+            "slight body turn"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "글도 떼다 말았어요. 닮은 거 하나로 적국에 들어가서, 들키면 그날로 끝이잖아요."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Sera.",
+      "prompt": "STYLE_GUARD. Sera half-body (SAME sheet identity; expression changes): amber eyes urgent and direct, brow knotted, mouth mid-protest, one hand thrown toward the lit portrait; she is arguing back. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"글도 떼다 말았어요. 닮은 거 하나로 적국에 들어가서, 들키면 그날로 끝이잖아요.\" tail down to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 14,
+      "filename": "panel_014.png",
+      "purpose": "dialogue — 로드릭 한 발 다가옴(압박↑), 뒤 초상화",
+      "character_refs": [
+        "RODERICK_REF",
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick stepping one pace closer, portrait behind, distance narrowing",
+        "camera_angle": "slight low angle",
+        "composition": "Roderick takes one pace toward Sera, the gap closing; the portrait looms behind him",
+        "pacing_role": "상승(시도)",
+        "expression": {
+          "beat": "pressure",
+          "face": "slate eyes narrowing with pressure, brow set low, mouth a cold flat line",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "stepping one pace forward",
+            "robe hem moving"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "들키면 너 하나 죽는다고 생각하나."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person, expression changes) takes one pace closer to Sera, the gap narrowing, slight low angle; slate blue-grey eyes narrowing with pressure, brow set low, mouth a cold flat line, clean-shaven smooth face NO stubble, deep-navy robe hem moving. Behind him the dead princess's portrait looms (SAME face as SERA_REF, pale-gold crown, cream silk gown, serene). Center band tall panel, flat white margins; rough-ink bubble in the top margin reading \"들키면 너 하나 죽는다고 생각하나.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 15,
+      "filename": "panel_015.png",
+      "purpose": "dialogue — 로드릭 클로즈업, 나라 인질 논리 전개",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "close-up of Roderick, half his face in shadow",
+        "camera_angle": "eye level",
+        "composition": "Roderick's low voice, half his face shadowed",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "cold_severity",
+          "face": "slate eyes cold and steady, brow heavy, mouth a low grim line, half the face in flat cel shadow",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "half-shadowed face, still"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "왕녀가 죽었다는 게 제국에 알려지는 순간, 에델리아는 약속을 어긴 나라가 된다."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Close-up of Roderick (RODERICK_REF; SAME person): slate blue-grey eyes cold and steady, brow heavy, mouth a low grim line, half his face in a large flat cel shadow (NOT facial-hair texture), clean-shaven smooth face NO stubble; a low severe voice. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"왕녀가 죽었다는 게 제국에 알려지는 순간, 에델리아는 약속을 어긴 나라가 된다.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 16,
+      "filename": "panel_016.png",
+      "purpose": "dialogue — 로드릭 반신, 결정타(나라가 걸렸다) + 위 어두운 여백",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick half-body, the room's stillness, dark space above",
+        "camera_angle": "eye level",
+        "composition": "Roderick states it like driving a nail; the room is still, a dark hush above him",
+        "pacing_role": "상승(1차 압박 완)",
+        "expression": {
+          "beat": "heavy_declaration",
+          "face": "slate eyes level and grave, brow set, mouth a firm final line",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still grave posture"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "negative_space": "dark hush in the upper interior space",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "너 하나의 목숨이 아니라 — 나라 하나가 걸린 일이다."
+        }
+      ],
+      "text_layout": "Speech bubble placed close beside/above Roderick head, short tail down to him — NOT floated high in empty top space.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person) half-body, stating it like driving a nail — slate eyes level and grave, brow set, mouth a firm final line, clean-shaven smooth face NO stubble, deep-navy robe; the portrait room still, a dark hush of interior space above him (flat dark plane, not a gradient haze). Center band tall panel, flat white margins; rough-ink bubble placed up in the dark interior space reading \"너 하나의 목숨이 아니라 — 나라 하나가 걸린 일이다.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 17,
+      "filename": "panel_017.png",
+      "purpose": "silent_afterbeat — 세라 옆얼굴 다문 입(침묵·재계산) + 내레이션",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "Sera's side profile, lips shut, gaze lowered",
+        "camera_angle": "eye level",
+        "composition": "Sera follows the arithmetic in silence, eyes down",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "heavy",
+          "face": "amber eyes lowered and thinking, lips pressed shut, brow faintly tense — following a grim calculation",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still profile, gaze lowered"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "narration",
+          "text": "거절이 곧 전쟁이라는 셈을, 나도 못 따라가는 게 아니었다."
+        }
+      ],
+      "text_layout": "Tail-less narration caption box in the lower margin.",
+      "prompt": "STYLE_GUARD. Side-profile of Sera (SAME sheet identity; expression changes): amber eyes lowered and thinking, lips pressed shut, brow faintly tense — following a grim calculation in silence; LOW energy, still. Center band panel, flat white margins; tail-less narration caption box in the lower margin reading \"거절이 곧 전쟁이라는 셈을, 나도 못 따라가는 게 아니었다.\" Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 18,
+      "filename": "panel_018.png",
+      "purpose": "reaction_closeup — 세라 눈, 계산 재가동(출구 찾는 눈)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "tight crop on Sera's eyes sharpening again",
+        "camera_angle": "eye level",
+        "composition": "Sera's eyes clear up again, searching for an exit (slum-bred bargaining mind)",
+        "pacing_role": "상승(재시도)",
+        "expression": {
+          "beat": "analysis",
+          "face": "amber eyes sharpening and clear again, pupils steady, one brow rising faintly, mouth a thinking line — hunting an exit",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "eyes lifting and focusing",
+            "tight crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Tight crop on Sera's eyes (SAME sheet identity; expression changes): amber eyes sharpening and clear again, pupils steady, one brow rising faintly, mouth a thinking line — a slum-bred mind hunting for an exit. Center band panel, flat white margins. Colder regal-hush palette."
+    },
+    {
+      "panel": 19,
+      "filename": "panel_019.png",
+      "purpose": "dialogue — 세라 반신, 우회 제안1(닮은 사람을 찾으면)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Sera half-body, calmly floating a workaround",
+        "camera_angle": "eye level",
+        "composition": "Sera calmly throws out a detour, composed",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "negotiation",
+          "face": "amber eyes calm and measuring, brow level, mouth speaking evenly — a composed bargainer",
+          "intensity": "subtle",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "slight body turn",
+            "hand half-lifted in a measured gesture"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…나만 입 다물면 되잖아요. 나 말고 닮은 사람을 찾으면."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Sera.",
+      "prompt": "STYLE_GUARD. Sera half-body (SAME sheet identity; expression changes): amber eyes calm and measuring, brow level, mouth speaking evenly, a hand half-lifted in a measured gesture — a composed bargainer floating a detour. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"…나만 입 다물면 되잖아요. 나 말고 닮은 사람을 찾으면.\" tail down to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 20,
+      "filename": "panel_020.png",
+      "purpose": "dialogue — 세라 클로즈업, 우회 제안2(못 본 걸로 하고 보내 주든가)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "close-up of Sera testing the water with one more move",
+        "camera_angle": "eye level",
+        "composition": "Sera plays one more card, probing",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "probing",
+          "face": "amber eyes steady and probing, one brow up, a faint testing tilt to the mouth",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "slight head tilt",
+            "off-center crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "아니면 그냥, 나를 못 본 걸로 하고 보내 주시든가요."
+        }
+      ],
+      "text_layout": "Speech bubble in the lower margin, tail up to Sera.",
+      "prompt": "STYLE_GUARD. Close-up of Sera (SAME sheet identity; expression changes): amber eyes steady and probing, one brow up, a faint testing tilt to the mouth, slight head tilt — playing one more card. Center band panel, flat white margins; rough-ink bubble in the lower margin reading \"아니면 그냥, 나를 못 본 걸로 하고 보내 주시든가요.\" tail up to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 21,
+      "filename": "panel_021.png",
+      "purpose": "reaction_closeup — 로드릭 입가 옅은 미소(인정)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "close-up of Roderick's mouth, a faint almost-smile",
+        "camera_angle": "eye level",
+        "composition": "Roderick's mouth curls almost into a smile — the look of a man who expected that mind",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "savoring",
+          "face": "a faint calculating almost-smile at one corner of the mouth, slate eyes cool and amused, brow relaxed",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "subtle mouth curl, tight crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…영리하군. 그 머리가 쓸모 있겠군."
+        }
+      ],
+      "text_layout": "Small speech bubble upper-right, tail to Roderick.",
+      "prompt": "STYLE_GUARD. Close-up of Roderick (RODERICK_REF; SAME person, expression changes): a faint calculating almost-smile at one corner of the mouth, slate blue-grey eyes cool and amused, brow relaxed — the look of a man who expected that mind; clean-shaven smooth face, NO stubble. Center band panel, flat white margins; small rough-ink bubble upper-right reading \"…영리하군. 그 머리가 쓸모 있겠군.\" tail to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 22,
+      "filename": "panel_022.png",
+      "purpose": "establishing — 카밀라 칼자루 손 클로즈업(거둘 필요 없다)",
+      "character_refs": [
+        "CAMILLA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/camilla/sheet.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "establishing",
+        "shot": "tight insert of Camilla's hand slowly leaving the sword hilt in the dark",
+        "camera_angle": "eye level",
+        "composition": "in shadow, Camilla's hand slowly comes off the sword hilt (as if there's no need to draw)",
+        "pacing_role": "상승(봉쇄)",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "hand slowly relaxing off the hilt"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_small",
+          "white_margin": true,
+          "one_focus": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Small framed insert (center, pure flat white #ffffff margins, do NOT fill) of Camilla's (CAMILLA_REF, dark leather guard glove) hand in shadow slowly relaxing OFF a thin jian sword hilt — as if there is no need to draw the blade. The blade/hilt as controlled flat tonal shapes (NO sparkle/speckle). One focus, big readable shadow shapes. Colder regal-hush palette."
+    },
+    {
+      "panel": 23,
+      "filename": "panel_023.png",
+      "purpose": "dialogue — 로드릭 반신, 퇴로 차단(너는 이미 봤다)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick half-body sealing off the exit",
+        "camera_angle": "eye level",
+        "composition": "Roderick nails down that there is no way out",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "cold_severity",
+          "face": "slate eyes cold and fixed, brow level, mouth a hard sealing line",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still imposing posture"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "너는 이미 봤다. 죽은 왕녀의 얼굴을, 나라의 비밀을."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person) half-body, sealing off the exit — slate blue-grey eyes cold and fixed, brow level, mouth a hard line, clean-shaven smooth face NO stubble, deep-navy robe. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"너는 이미 봤다. 죽은 왕녀의 얼굴을, 나라의 비밀을.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 24,
+      "filename": "panel_024.png",
+      "purpose": "dialogue — 로드릭 클로즈업 그늘, 양자택일 위협 2말풍선",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "close-up of Roderick's shadowed face, low menacing certainty",
+        "camera_angle": "eye level",
+        "composition": "Roderick's shadowed face, a low chilling either-or",
+        "pacing_role": "상승(봉쇄)",
+        "expression": {
+          "beat": "chilling_threat",
+          "face": "slate eyes cold and unblinking, brow low, mouth a low menacing line, large flat shadow across half the face",
+          "intensity": "strong",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "heavy shadow, still"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "본 사람은 두 갈래밖에 없어."
+        },
+        {
+          "type": "dialogue",
+          "text": "한패가 되거나 — 입을 막히거나."
+        }
+      ],
+      "text_layout": "Two bubbles read top-to-bottom (upper then lower), both tails to Roderick.",
+      "prompt": "STYLE_GUARD. Close-up of Roderick (RODERICK_REF; SAME person, expression changes): slate blue-grey eyes cold and unblinking, brow low, mouth a low menacing line, a large flat cel shadow across half the face (NOT facial-hair texture), clean-shaven smooth face NO stubble — a chilling either-or. Center band tall panel, flat white margins; TWO rough-ink bubbles read top-to-bottom: upper \"본 사람은 두 갈래밖에 없어.\" then lower \"한패가 되거나 — 입을 막히거나.\" both tails to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 25,
+      "filename": "panel_025.png",
+      "purpose": "reaction_closeup — 세라 목/등 서늘(위협 체감)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "close-up of Sera's tensed side-neck, a tiny swallow",
+        "camera_angle": "eye level",
+        "composition": "Sera's stiffened side-neck and jaw, a micro swallow",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "tension",
+          "face": "jaw tight, a faint swallow at the throat, eyes not fully visible, brow tense — a chill down the spine",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "micro swallow, stiffened neck"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Close-up of Sera's tensed side-neck and jaw (SAME sheet identity, light-chestnut loose hair): jaw tight, a faint micro swallow at the throat, brow tense, eyes only partly visible — a chill down her spine. Center band panel, flat white margins, big readable value shapes. Colder regal-hush palette."
+    },
+    {
+      "panel": 26,
+      "filename": "panel_026.png",
+      "purpose": "dialogue — 로드릭, 마지막 카드(네 동생들)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick half-body, calmly playing the last card",
+        "camera_angle": "eye level",
+        "composition": "Roderick plays the sibling card, calm and precise",
+        "pacing_role": "상승(약점)",
+        "expression": {
+          "beat": "cold_precision",
+          "face": "slate eyes calm and precise, brow level, mouth measured and cold",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still composed posture"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "그리고 — 네 동생들 말이다."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person) half-body, calmly playing his last card — slate blue-grey eyes calm and precise, brow level, mouth measured and cold, clean-shaven smooth face NO stubble, deep-navy robe. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"그리고 — 네 동생들 말이다.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 27,
+      "filename": "panel_027.png",
+      "purpose": "reaction_closeup — 세라 얼굴 얼어붙음(약점 직격)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "close-up of Sera's face freezing, pupils shrinking",
+        "camera_angle": "eye level",
+        "composition": "at 'siblings' Sera's face freezes solid, pupils narrowing",
+        "pacing_role": "상승",
+        "expression": {
+          "beat": "weak_point_struck",
+          "face": "amber eyes flung still and fixed, pupils shrunk small, eyebrows pulled up and frozen, lips parted and rigid — frozen at the word 'siblings'",
+          "intensity": "strong",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "frozen face, held breath"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Close-up of Sera (keep the SAME person as the sheet — face structure, light-chestnut wavy hair, amber iris, upturned almond eyes — EXPRESSION changes strongly): amber eyes flung still and fixed, pupils shrunk small, eyebrows pulled up and frozen, lips parted and rigid — her face freezing solid at the word 'siblings'. Center band tall panel, flat white margins. Colder regal-hush palette."
+    },
+    {
+      "panel": 28,
+      "filename": "panel_028.png",
+      "purpose": "dialogue — 로드릭 반신, 거래 마무리 2말풍선(간단한 거래)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick half-body closing the deal, a voice of pure cost-benefit",
+        "camera_angle": "eye level",
+        "composition": "Roderick nails the bargain down, only profit-and-loss left in his voice",
+        "pacing_role": "상승(3중 잠금 완)",
+        "expression": {
+          "beat": "cold_deal",
+          "face": "slate eyes level and transactional, brow flat, mouth a measured cold line",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still composed posture"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "네 동생들이 빈민가에서 겨울을 나길 바란다면, 너는 그 궁에서 살아남으면 된다."
+        },
+        {
+          "type": "dialogue",
+          "text": "간단한 거래지."
+        }
+      ],
+      "text_layout": "Two bubbles read top-to-bottom (upper then lower), both tails to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person) half-body closing the deal — slate blue-grey eyes level and transactional, brow flat, mouth a measured cold line, clean-shaven smooth face NO stubble, deep-navy robe; only profit-and-loss left in his voice. Center band panel, flat white margins; TWO rough-ink bubbles read top-to-bottom: upper \"네 동생들이 빈민가에서 겨울을 나길 바란다면, 너는 그 궁에서 살아남으면 된다.\" then lower \"간단한 거래지.\" both tails to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 29,
+      "filename": "panel_029.png",
+      "purpose": "action_impact(가벼운 모션) — 머리카락 흘러내리며 오른쪽 귀 뒤 노출 [붉은 점 연속성]",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "action_impact",
+        "shot": "Sera turning her head, a fall of loose hair briefly baring behind her right ear",
+        "camera_angle": "eye level, slight three-quarter back",
+        "composition": "as Sera turns her head, a loose lock of hair slides down and briefly bares the area behind her RIGHT ear (a small red mole there); light motion lines",
+        "pacing_role": "절정 빌드업",
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "head turning",
+            "a lock of loose hair sliding down (a few bold soft motion lines, NOT speckle)"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "sfx",
+          "text": "스르"
+        }
+      ],
+      "text_layout": "Small flat-ink SFX '스르' on the side near the sliding hair.",
+      "prompt": "STYLE_GUARD. Sera (SERA_REF, light-chestnut wavy hair worn loose) turns her head; a lock of her unbound hair slides down and briefly BARES the area behind her RIGHT ear, revealing a small red mole there (CONTINUITY: same spot as the portrait's mole, right ear). A few bold soft motion lines on the sliding hair (large clean graphic strokes, NOT a speckle field). Center band panel, flat white margins; small flat-ink SFX '스르' on the side near the sliding hair. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 30,
+      "filename": "panel_030.png",
+      "purpose": "reaction_closeup — 카밀라 눈 클로즈업(귀 뒤에서 멈춤, 충격 억제)",
+      "character_refs": [
+        "CAMILLA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/camilla/sheet.png",
+        "workspace/fake_princess_1/character/camilla/sheet_face.png",
+        "workspace/fake_princess_1/character/camilla/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "close-up of Camilla's eyes in the dark, a swordsman's gaze stopping behind the ear",
+        "camera_angle": "eye level",
+        "composition": "in shadow, Camilla's eyes — a blade-handler's gaze that misses nothing — stop on the area behind Sera's ear and waver slightly",
+        "pacing_role": "절정 빌드업",
+        "expression": {
+          "beat": "suppressed_shock",
+          "face": "grey-green eyes narrowing then catching, a faint waver in the pupils, brow tightening — a controlled shock she holds in",
+          "intensity": "strong",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "eyes catching and faintly wavering, tight crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Close-up of Camilla (keep the SAME person as the sheet — grey-green eyes, thin scar above the left mouth corner, dark-umber tight low knot — EXPRESSION changes): grey-green eyes in shadow narrowing then catching on something behind Sera's ear, a faint waver in the pupils, brow tightening — a controlled shock held in. Center band panel, flat white margins, big readable value shapes. Colder regal-hush palette."
+    },
+    {
+      "panel": 31,
+      "filename": "panel_031.png",
+      "purpose": "dialogue — 카밀라 반신, 처음 입을 엶(…재상님)",
+      "character_refs": [
+        "CAMILLA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/camilla/sheet.png",
+        "workspace/fake_princess_1/character/camilla/sheet_face.png",
+        "workspace/fake_princess_1/character/camilla/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Camilla stepping one pace out of the dark, low shaken voice",
+        "camera_angle": "eye level",
+        "composition": "Camilla takes a step out of the shadow, speaking low, her voice unsteady",
+        "pacing_role": "절정",
+        "expression": {
+          "beat": "agitation",
+          "face": "grey-green eyes uneasy and fixed, brow drawn, mouth parting on a low unsteady word",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "stepping one pace out of shadow"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…재상님."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Camilla.",
+      "prompt": "STYLE_GUARD. Camilla (CAMILLA_REF; SAME person, expression changes — grey-green eyes, scar above left mouth corner, dark-umber tight low knot, dark leather guard uniform, thin jian at waist) steps one pace out of the shadow, speaking low and unsteady — grey-green eyes uneasy and fixed, brow drawn, mouth parting. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"…재상님.\" tail down to Camilla. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 32,
+      "filename": "panel_032.png",
+      "purpose": "action_impact(가벼운 동세) — 세라가 귀 가리려는 손(늦음)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "action_impact",
+        "shot": "Sera's hand shooting up to cover her ear, but too late",
+        "camera_angle": "eye level",
+        "composition": "Sera instinctively raises a hand to cover her right ear but is a beat too late; light motion lines on the hand",
+        "pacing_role": "절정",
+        "expression": {
+          "beat": "alarm",
+          "face": "amber eyes widened, brow up, mouth tightening — caught and reacting too late",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "hand shooting up to the ear (a few bold soft motion lines on the arm, NOT speckle)"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Sera (SERA_REF, light-chestnut loose hair; expression changes): a hand shooting up to cover her RIGHT ear but a beat too late — amber eyes widened, brow up, mouth tightening. A few bold soft motion lines on the rising arm (large clean strokes, NOT a speckle field). Center band panel, flat white margins. Colder regal-hush palette."
+    },
+    {
+      "panel": 33,
+      "filename": "panel_033.png",
+      "purpose": "dialogue — 로드릭이 초상화 귀 뒤를 가리킴(닮았다고 했나)",
+      "character_refs": [
+        "RODERICK_REF",
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Roderick pointing not at Sera but at the portrait's behind-the-ear area",
+        "camera_angle": "eye level",
+        "composition": "Roderick points not at Sera but at the area behind the portrait's ear",
+        "pacing_role": "절정",
+        "expression": {
+          "beat": "low_certainty",
+          "face": "slate eyes calm and certain, brow level, a faint cold knowing set to the mouth",
+          "intensity": "medium",
+          "differs_from_default": false
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "pointing arm toward the portrait"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "닮았다고 했나."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Roderick (RODERICK_REF; SAME person — slate eyes calm and certain, brow level, a faint cold knowing set to the mouth, clean-shaven NO stubble, deep-navy robe) points NOT at Sera but at the area behind the princess portrait's ear. Part of the portrait in frame: SAME face as SERA_REF, pale-gold crown, cream silk gown, serene. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"닮았다고 했나.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 34,
+      "filename": "panel_034.png",
+      "purpose": "reaction_closeup — 초상화 귀 뒤 붉은 점 클로즈업 [붉은 점 연속성]",
+      "character_refs": [
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "extreme close-up viewed FROM BEHIND-RIGHT, the RIGHT ear near image-center, the small red mole on the mastoid skin DIRECTLY BEHIND the right ear (not earlobe, not cheek); cut 34(portrait) and cut 35(live) share this framing for the crosscut",
+        "camera_angle": "eye level",
+        "composition": "the portrait princess's right ear and the small red mole the painter rendered behind it (same spot/SSOT)",
+        "pacing_role": "절정",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still tight crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Extreme close-up of the PAINTED princess portrait's RIGHT ear and the area behind it: a small red mole the painter deliberately rendered behind the right ear (CONTINUITY SSOT: same spot as Sera's mole). Light-chestnut painted hair, a sliver of the pale-gold crown; this is a PAINTING, flat-ish painterly cel, no glossy highlights. Center band tall panel, flat white margins, tight crop, big readable shapes. Colder regal-hush palette."
+    },
+    {
+      "panel": 35,
+      "filename": "panel_035.png",
+      "purpose": "reaction_closeup — 세라 귀 뒤 붉은 점 클로즈업(같은 구도 교차) [붉은 점 연속성]",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "extreme close-up viewed FROM BEHIND-RIGHT, the RIGHT ear near image-center, the small red mole on the mastoid skin DIRECTLY BEHIND the right ear (not earlobe, not cheek); cut 34(portrait) and cut 35(live) share this framing for the crosscut",
+        "camera_angle": "eye level",
+        "composition": "Sera's right ear and the same red mole in the same spot, shot in the same framing as the portrait (crosscut)",
+        "pacing_role": "절정",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still tight crop, matching cut 34"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "세상에 얼굴이 같은 사람은 더러 있다."
+        }
+      ],
+      "text_layout": "Speech bubble (off-panel Roderick) placed in the upper area close beside the ear, short tail — NOT floated in an empty top margin (bubble and ear+mole read together).",
+      "prompt": "STYLE_GUARD. Extreme close-up of Sera's RIGHT ear and the area behind it (SERA_REF, light-chestnut loose hair): the SAME small red mole in the SAME spot as the portrait (CONTINUITY SSOT), shot in the SAME tight framing as cut 34 (crosscut). Real living skin, warm ivory, flat-ish painterly cel, no glossy highlights. Center band tall panel, flat white margins; rough-ink bubble (speaker Roderick, off-panel) in the top margin reading \"세상에 얼굴이 같은 사람은 더러 있다.\" tail pointing off toward him. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 36,
+      "filename": "panel_036.png",
+      "purpose": "dialogue — 로드릭 클로즈업, 못박는 말(점까지 같은 사람은 없다)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "close-up of Roderick, a low clear final pronouncement",
+        "camera_angle": "eye level",
+        "composition": "Roderick's low, clear, nailing declaration",
+        "pacing_role": "절정",
+        "expression": {
+          "beat": "nailing_certainty",
+          "face": "slate eyes hard and certain, brow level, mouth a low precise pronouncing line",
+          "intensity": "strong",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still, certain"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "그런데 — 귀 뒤의 점까지 같은 사람은, 없다."
+        }
+      ],
+      "text_layout": "Speech bubble in the lower margin, tail up to Roderick.",
+      "prompt": "STYLE_GUARD. Close-up of Roderick (RODERICK_REF; SAME person, expression changes): slate blue-grey eyes hard and certain, brow level, mouth a low precise pronouncing line — nailing it shut; clean-shaven smooth face, NO stubble. Center band panel, flat white margins; rough-ink bubble in the lower margin reading \"그런데 — 귀 뒤의 점까지 같은 사람은, 없다.\" tail up to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 37,
+      "filename": "panel_037.png",
+      "purpose": "silent_afterbeat — 세라 손이 제 귀 뒤 점에 닿음(전율) [붉은 점 연속성]",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "insert of Sera's fingertips reaching up to the mole behind her right ear, trembling",
+        "camera_angle": "eye level",
+        "composition": "Sera slowly raises her own hand to the mole behind her right ear, fingertips trembling",
+        "pacing_role": "절정 여파",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "fingertips reaching, faint tremor"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…말도 안 돼."
+        }
+      ],
+      "text_layout": "Small speech bubble (Sera, almost a murmur) in the lower margin, small, tail up to Sera.",
+      "prompt": "STYLE_GUARD. Insert of Sera's (SERA_REF, warm ivory skin, light-chestnut loose hair) own hand reaching up to touch the small red mole behind her RIGHT ear (CONTINUITY SSOT, same spot), fingertips trembling. Big readable shapes, focus on the hand and the mole. Center band panel, flat white margins; a small rough-ink speech bubble (Sera, almost a murmur) in the lower margin reading \"…말도 안 돼.\" small, tail up to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 38,
+      "filename": "panel_038.png",
+      "purpose": "silent_afterbeat — 흰 여백 + 세라 옆얼굴 일부(내면 공포 저울)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "large flat-white space, a sliver of Sera's profile at the bottom",
+        "camera_angle": "eye level",
+        "composition": "big flat white space, only part of Sera's lowered profile at the bottom, the room's sound gone far away",
+        "pacing_role": "여백 호흡(내면)",
+        "expression": {
+          "beat": "inner_conflict",
+          "face": "amber eyes flat and distant, brow tense, mouth a quiet line — sound of the room receding",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": []
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "negative_space": "upper ~60% flat white",
+          "framing": "breath_panel",
+          "whitespace": {
+            "amount": "dominant",
+            "fill": "flat_white",
+            "content_anchor": "bottom",
+            "bubble_in_blank": true
+          }
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "narration",
+          "text": "들키면 처형. 안 들켜도 적국 한복판."
+        }
+      ],
+      "text_layout": "Two-line tail-less narration caption box in the upper flat-white area.",
+      "prompt": "STYLE_GUARD. Tall vertical webtoon panel; the upper ~60% is clean flat pure white (#ffffff) empty space holding a tail-less narration caption box reading \"들키면 처형. 안 들켜도 적국 한복판.\"; the lower ~40% is a sliver of Sera's lowered side-profile (SAME sheet identity; expression changes) bleeding up from the bottom, the top of the artwork fading softly into the white — amber eyes flat and distant, brow tense, mouth a quiet line, the room's sound receding. Do NOT fill the white area with scenery/gradient/texture, keep it flat white. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 39,
+      "filename": "panel_039.png",
+      "purpose": "silent_afterbeat — 동생 손 회상 인서트(보상 저울) [bg_slum_room]",
+      "character_refs": [
+        "SIBLING_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/youngest_sibling/sheet.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_slum_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "blurred flashback insert of the youngest sibling's small hand tugging a skirt hem",
+        "camera_angle": "eye level",
+        "composition": "blurred memory tone — the afterimage of the youngest's small hand tugging a skirt hem ('언니, 굴뚝이 뭐야?'), the slum room hazy",
+        "pacing_role": "여백 호흡(내면)",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "soft blurred memory haze (large flat soft tone, not speckle)"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_small",
+          "white_margin": true,
+          "one_focus": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "narration",
+          "text": "그런데 — 막내가 굴뚝에 안 들어가도 될 돈이었다."
+        }
+      ],
+      "text_layout": "Tail-less narration caption box (memory tone) in the lower margin.",
+      "prompt": "STYLE_GUARD. Small framed FLASHBACK insert (center, pure flat white #ffffff margins, do NOT fill) in a soft blurred memory tone: the afterimage of the youngest sibling's (SIBLING_REF, light-chestnut messy short hair, patched shirt) small hand tugging a faded skirt hem, the slum room (bg_slum_room) hazy and cold-ash behind. Blur as a large flat soft low-frequency tone, NOT a speckle field. One focus, big readable shapes. A tail-less narration caption box in the lower margin reading \"그런데 — 막내가 굴뚝에 안 들어가도 될 돈이었다.\". Cold rain-grey/ash flashback palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 40,
+      "filename": "panel_040.png",
+      "purpose": "silent_afterbeat — 세라 눈 + 흐린 초상화(불가해, 결론)",
+      "character_refs": [
+        "SERA_REF",
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "Sera's eyes in focus, the portrait behind out of focus",
+        "camera_angle": "eye level",
+        "composition": "Sera's eyes sharp in the foreground, the portrait behind softened — an unreadable thing she can't read",
+        "pacing_role": "여백 호흡(내면)",
+        "expression": {
+          "beat": "unreadable",
+          "face": "amber eyes still and unreadable, brow faintly knotted, mouth a quiet line — for once she cannot read what she sees",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still, soft-toned background portrait (flat soft tone, no DOF photo-blur)"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "narration",
+          "text": "왜 같은 얼굴이지. 왜 같은 점이지."
+        },
+        {
+          "type": "narration",
+          "text": "…거절할 수 있는 길은, 처음부터 없었다."
+        }
+      ],
+      "text_layout": "Two tail-less narration caption boxes read top-to-bottom in the margins.",
+      "prompt": "STYLE_GUARD. Sera's eyes (SAME sheet identity; expression changes) sharp in the foreground — amber eyes still and unreadable, brow faintly knotted, mouth a quiet line; behind her the princess portrait (SAME face, pale-gold crown, cream silk gown) softened into a large flat soft tone (NOT a photographic depth-of-field blur). Center band panel, flat white margins; TWO tail-less narration caption boxes read top-to-bottom: \"왜 같은 얼굴이지. 왜 같은 점이지.\" then \"…거절할 수 있는 길은, 처음부터 없었다.\". Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 41,
+      "filename": "panel_041.png",
+      "purpose": "dialogue — 세라 돌아서는 반신, 수락(…받아들이죠)",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "Sera turning to face Roderick, tremor held down (as before a creditor)",
+        "camera_angle": "eye level",
+        "composition": "Sera turns to face Roderick squarely, a face holding down its tremor",
+        "pacing_role": "상승(수락)",
+        "expression": {
+          "beat": "resolve",
+          "face": "amber eyes steady and set, tremor held down behind a level brow, mouth firm — resolve, like facing a creditor",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "MID",
+          "techniques": [
+            "turning to face him, shoulders squaring"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…받아들이죠."
+        }
+      ],
+      "text_layout": "Speech bubble in the lower margin, tail up to Sera.",
+      "prompt": "STYLE_GUARD. Sera (SAME sheet identity; expression changes) turns to face Roderick squarely, shoulders squaring — amber eyes steady and set, a tremor held down behind a level brow, mouth firm; resolve, the way she'd face a creditor. Center band tall panel, flat white margins; rough-ink bubble in the lower margin reading \"…받아들이죠.\" tail up to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 42,
+      "filename": "panel_042.png",
+      "purpose": "dialogue — 세라 손가락 꼽는 인서트, 조건1(선금) 2말풍선",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "insert of Sera's hand counting off one finger, calm",
+        "camera_angle": "eye level",
+        "composition": "Sera's hand folds down one finger (a bargainer's count), the hand calm and steady",
+        "pacing_role": "상승(협상)",
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "one finger folding down, steady hand"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "대신, 조건이 있어요."
+        },
+        {
+          "type": "dialogue",
+          "text": "하나. 동생들은 떠나기 전에, 안전한 곳으로 먼저. 선금으로요."
+        }
+      ],
+      "text_layout": "Two bubbles read top-to-bottom (upper then lower), both tails to Sera's hand/Sera.",
+      "prompt": "STYLE_GUARD. Insert of Sera's (SERA_REF, warm ivory hand) hand folding down one finger — a bargainer's count, the hand calm and steady. Big readable shapes, focus on the hand. Center band panel, flat white margins; TWO rough-ink bubbles read top-to-bottom: upper \"대신, 조건이 있어요.\" then lower \"하나. 동생들은 떠나기 전에, 안전한 곳으로 먼저. 선금으로요.\" tails toward Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 43,
+      "filename": "panel_043.png",
+      "purpose": "dialogue — 세라 클로즈업 낮은 음성, 조건2·3 2말풍선",
+      "character_refs": [
+        "SERA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png",
+        "workspace/fake_princess_1/character/sera/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "dialogue",
+        "shot": "close-up of Sera, voice dropping low for the first time, counting a 2nd and 3rd finger",
+        "camera_angle": "eye level",
+        "composition": "Sera folds the second and third fingers, her voice dropping low for the first time",
+        "pacing_role": "상승(협상)",
+        "expression": {
+          "beat": "resolve_aching",
+          "face": "amber eyes steady but a flicker of ache beneath, brow level, mouth firm and low — resolve carrying a hidden grief",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "fingers folding, off-center crop"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "둘. 약속한 돈은 내가 성공하든 실패하든, 그 아이들 몫으로."
+        },
+        {
+          "type": "dialogue",
+          "text": "셋. 내가 거기서 죽어도 — 동생들한테는, 칼이 닿지 않게."
+        }
+      ],
+      "text_layout": "Two bubbles read top-to-bottom (upper then lower), both tails to Sera.",
+      "prompt": "STYLE_GUARD. Close-up of Sera (SAME sheet identity; expression changes): amber eyes steady but a flicker of ache beneath, brow level, mouth firm and low — resolve carrying a hidden grief, her voice dropping low for the first time, fingers folding down. Center band panel, flat white margins; TWO rough-ink bubbles read top-to-bottom: upper \"둘. 약속한 돈은 내가 성공하든 실패하든, 그 아이들 몫으로.\" then lower \"셋. 내가 거기서 죽어도 — 동생들한테는, 칼이 닿지 않게.\" both tails to Sera. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 44,
+      "filename": "panel_044.png",
+      "purpose": "reaction_closeup — 로드릭 눈 재평가(거래 상대를 봄, 보증)",
+      "character_refs": [
+        "RODERICK_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/roderick/sheet.png",
+        "workspace/fake_princess_1/character/roderick/sheet_face.png",
+        "workspace/fake_princess_1/character/roderick/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "reaction_closeup",
+        "shot": "close-up of Roderick re-appraising Sera, a faint nod",
+        "camera_angle": "eye level",
+        "composition": "Roderick looks at Sera anew — not a tool but a bargaining counterpart, a faint nod",
+        "pacing_role": "상승(거래 성립)",
+        "expression": {
+          "beat": "acknowledgement",
+          "face": "slate eyes re-appraising and faintly impressed, brow easing, a small approving set to the mouth, a slight nod",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "a slight nod"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "dialogue",
+          "text": "…영리하군. 그 조건, 내가 보증하지."
+        }
+      ],
+      "text_layout": "Speech bubble in the top margin, tail down to Roderick.",
+      "prompt": "STYLE_GUARD. Close-up of Roderick (RODERICK_REF; SAME person, expression changes): slate blue-grey eyes re-appraising and faintly impressed, brow easing, a small approving set to the mouth, a slight nod — seeing Sera not as a tool but as a bargaining counterpart; clean-shaven smooth face, NO stubble. Center band panel, flat white margins; rough-ink bubble in the top margin reading \"…영리하군. 그 조건, 내가 보증하지.\" tail down to Roderick. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    },
+    {
+      "panel": 45,
+      "filename": "panel_045.png",
+      "purpose": "silent_afterbeat — 카밀라 시선 클로즈업(도구→사람 떡밥)",
+      "character_refs": [
+        "CAMILLA_REF"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/camilla/sheet.png",
+        "workspace/fake_princess_1/character/camilla/sheet_face.png",
+        "workspace/fake_princess_1/character/camilla/sheet_expressions.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "silent_afterbeat",
+        "shot": "close-up of Camilla's gaze re-seeing Sera in the dark",
+        "camera_angle": "eye level",
+        "composition": "in shadow, Camilla looks at Sera again — the first realization that the girl she meant to use as a blade can reckon and bargain",
+        "pacing_role": "상승(떡밥)",
+        "expression": {
+          "beat": "wavering_gaze",
+          "face": "grey-green eyes softening and wavering, brow easing, lips just parted — a quiet first reappraisal",
+          "intensity": "medium",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "still, gaze shifting"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "standard",
+          "framing": "framed_breakout"
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [],
+      "text_layout": "none",
+      "prompt": "STYLE_GUARD. THIS IS A SILENT WORDLESS PANEL: no speech bubble, no narration, no SFX lettering, no Korean letters anywhere. Close-up of Camilla (keep the SAME person as the sheet — grey-green eyes, thin scar above the left mouth corner, dark-umber tight low knot — EXPRESSION changes): grey-green eyes in shadow softening and wavering, brow easing, lips just parted — a quiet first reappraisal of the girl she meant to use as a blade. Center band panel, flat white margins, big readable value shapes. Colder regal-hush palette."
+    },
+    {
+      "panel": 46,
+      "filename": "panel_046.png",
+      "purpose": "full_bleed 끝 훅 — 세라가 점 다시 덮는 손 → 세라 눈 + 거울 같은 초상화 한 프레임 [붉은 점 연속성]",
+      "character_refs": [
+        "SERA_REF",
+        "PORTRAIT_ARIADNE"
+      ],
+      "style_reference_paths": [
+        "workspace/fake_princess_1/assets/style_ref_001.png"
+      ],
+      "character_sheet_paths": [
+        "workspace/fake_princess_1/character/sera/sheet.png",
+        "workspace/fake_princess_1/character/sera/sheet_face.png"
+      ],
+      "background_ref": "workspace/fake_princess_1/assets/bg_portrait_room.png",
+      "reference_direction": {
+        "panel_type": "full_bleed",
+        "shot": "Sera's hand covering the mole with fallen hair, then her eyes and the mirror-like portrait meeting in one half-and-half frame",
+        "camera_angle": "eye level",
+        "composition": "Sera draws the fallen lock back over the mole behind her right ear; her living eyes (one side) and the mirror-like princess portrait (other side) face each other across a center seam in a half-and-half frame, large quiet space, stillness",
+        "pacing_role": "cliffhanger (끝 훅)",
+        "expression": {
+          "beat": "chill_fracture",
+          "face": "Sera's side: still, eyes locked on the portrait, a cold fracture of self behind them; portrait side: serene faint smile",
+          "intensity": "strong",
+          "differs_from_default": true
+        },
+        "motion": {
+          "energy": "LOW",
+          "techniques": [
+            "hand drawing the hair back over the ear, breath-held stillness"
+          ]
+        },
+        "layout": {
+          "canvas_aspect": "tall",
+          "negative_space": "quiet dim seam down the middle for the caption",
+          "framing": "full_bleed",
+          "bubble_breakout": true
+        },
+        "do_not_copy": "Do not reproduce source characters, costumes, exact layouts, or recognizable scenes."
+      },
+      "visible_text": [
+        {
+          "type": "narration",
+          "text": "나는 누구지?"
+        },
+        {
+          "type": "narration",
+          "text": "…이들은, 그걸 알고 온 걸까."
+        }
+      ],
+      "text_layout": "Two tail-less narration caption boxes centered on the seam, read top-to-bottom, large surrounding space.",
+      "prompt": "STYLE_GUARD. Full-bleed half-and-half mirror composition: Sera (SERA_REF, light-chestnut loose hair, grey-taupe commoner dress) on one side, her hand just drawing a fallen lock of hair back to cover the small red mole behind her RIGHT ear (CONTINUITY SSOT), her living eyes still and locked on the portrait, a cold fracture of self behind them; on the other side, the mirror-like princess portrait (SAME face as SERA_REF, slender pale-gold crown, cream silk gown, serene faint smile) — the two identical faces meet across a quiet dim center seam. Keep both faces FLAT-ish painterly cel, no glossy highlights, no glow/bloom. TWO tail-less narration caption boxes centered on the seam read top-to-bottom: \"나는 누구지?\" then \"…이들은, 그걸 알고 온 걸까.\", large quiet space around them. LOW energy, breath-held stillness. Colder regal-hush palette. avoid garbled Korean, fake letters, watermark."
+    }
+  ]
+}
