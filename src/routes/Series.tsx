@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { episodesAscending, getWebtoon } from "../lib/catalog";
+import { episodesAscending, getWebtoon, koTitle } from "../lib/catalog";
 import { getContinue } from "../lib/history";
 import { assetUrl } from "../lib/paths";
 import NotFound from "./NotFound";
@@ -21,7 +21,7 @@ export default function Series() {
           <img src={assetUrl(toon.mainThumbnail)} alt={toon.title} />
         </div>
         <div className="series-hero__meta">
-          <h1 className="series-hero__title">{toon.title}</h1>
+          <h1 className="series-hero__title">{koTitle(toon.title)}</h1>
           <p className="series-hero__author">{toon.author}</p>
           {toon.summary && <p className="series-hero__summary">{toon.summary}</p>}
           {toon.tags.length > 0 && (
@@ -39,26 +39,6 @@ export default function Series() {
         </div>
       </section>
 
-      {toon.characters.length > 0 && (
-        <section className="section">
-          <h2 className="section__title">등장인물</h2>
-          <div className="character-rail">
-            {toon.characters.map((char) => (
-              <figure key={char.id} className="character-card">
-                <div className="character-card__thumb">
-                  <img src={assetUrl(char.thumbnail)} alt={char.name} loading="lazy" />
-                </div>
-                <figcaption>
-                  <p className="character-card__name">{char.name}</p>
-                  {char.description && (
-                    <p className="character-card__desc">{char.description}</p>
-                  )}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
-      )}
 
       <section className="section">
         <h2 className="section__title">회차 ({toon.episodeCount})</h2>

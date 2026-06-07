@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { adjacentEpisodes, getEpisode, getWebtoon } from "../lib/catalog";
+import { adjacentEpisodes, getEpisode, getWebtoon, koTitle } from "../lib/catalog";
 import {
   getReaderSize,
   READER_SIZES,
@@ -21,6 +21,8 @@ export default function Reader() {
   const { toonId, episodeId } = useParams();
   const navigate = useNavigate();
   const [size, setSize] = useState<ReaderSize>(getReaderSize);
+  const [barVisible, setBarVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   const toon = toonId ? getWebtoon(toonId) : undefined;
   const episode = toon && episodeId ? getEpisode(toon, episodeId) : undefined;
@@ -31,6 +33,16 @@ export default function Reader() {
       window.scrollTo(0, 0);
     }
   }, [toon, episode]);
+
+  useEffect(() => {
+    function onScroll() {
+      const y = window.scrollY;
+      setBarVisible(y < 60 || y < lastScrollY.current);
+      lastScrollY.current = y;
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   if (!toon || !episode) return <NotFound />;
 
@@ -43,13 +55,13 @@ export default function Reader() {
 
   return (
     <div className="reader">
-      <header className="reader-bar">
+      <header className={`reader-bar${barVisible ? "" : " reader-bar--hidden"}`}>
         <div className="reader-bar__inner">
           <Link className="reader-bar__back" to={`/series/${toon.id}`} aria-label="목록으로">
-            ←
+            ← 목록
           </Link>
           <div className="reader-bar__title">
-            <p className="reader-bar__toon">{toon.title}</p>
+            <p className="reader-bar__toon">{koTitle(toon.title)}</p>
             <p className="reader-bar__ep">{episode.title}</p>
           </div>
           <div className="reader-bar__sizes" role="group" aria-label="뷰어 너비">

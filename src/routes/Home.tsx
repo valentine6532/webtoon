@@ -1,26 +1,12 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { allTags, getWebtoon, latestEpisodes, webtoons } from "../lib/catalog";
-import { readHistory } from "../lib/history";
+import { allTags, koTitle, latestEpisodes, webtoons } from "../lib/catalog";
 import { assetUrl } from "../lib/paths";
 import ToonCard from "../components/ToonCard";
 
 export default function Home() {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
-
-  const continueItems = useMemo(() => {
-    const history = readHistory();
-    return Object.entries(history)
-      .sort(([, a], [, b]) => b.updatedAt - a.updatedAt)
-      .map(([toonId, entry]) => {
-        const toon = getWebtoon(toonId);
-        const episode = toon?.episodes.find((e) => e.id === entry.episodeId);
-        return toon && episode ? { toon, episode } : null;
-      })
-      .filter((x): x is NonNullable<typeof x> => x !== null)
-      .slice(0, 6);
-  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase("ko-KR");
@@ -35,7 +21,7 @@ export default function Home() {
     });
   }, [query, activeTags]);
 
-  const latest = useMemo(() => latestEpisodes(8), []);
+  const spotlight = useMemo(() => latestEpisodes(1)[0] ?? null, []);
 
   function toggleTag(tag: string) {
     setActiveTags((prev) => {
@@ -47,57 +33,46 @@ export default function Home() {
 
   return (
     <div className="home">
-      <section className="hero">
-        <h1 className="hero__title">AI가 그린 웹툰, 한자리에</h1>
-        <p className="hero__sub">기획부터 작화까지 AI로 완성한 오리지널 웹툰 포털</p>
-      </section>
-
-      {continueItems.length > 0 && (
-        <section className="section">
-          <h2 className="section__title">이어보기</h2>
-          <div className="rail">
-            {continueItems.map(({ toon, episode }) => (
-              <Link
-                key={toon.id}
-                className="rail-card"
-                to={`/reader/${toon.id}/${episode.id}`}
-              >
-                <div className="rail-card__thumb">
-                  <img src={assetUrl(episode.thumbnail)} alt={episode.title} loading="lazy" />
-                </div>
-                <div className="rail-card__body">
-                  <p className="rail-card__toon">{toon.title}</p>
-                  <p className="rail-card__ep">{episode.title}</p>
-                </div>
+      {spotlight && (
+        <section className="spotlight">
+          <div className="spotlight__bg">
+            <img
+              className="spotlight__bg-img"
+              src={assetUrl(spotlight.toon.mainThumbnail)}
+              alt=""
+              aria-hidden="true"
+            />
+            <div className="spotlight__bg-overlay" />
+          </div>
+          <div className="spotlight__content">
+            <p className="spotlight__eyebrow">최신 업데이트</p>
+            <h1 className="spotlight__title">{koTitle(spotlight.toon.title)}</h1>
+            <p className="spotlight__author">{spotlight.toon.author}</p>
+            {spotlight.toon.summary && (
+              <p className="spotlight__summary">{spotlight.toon.summary}</p>
+            )}
+            {spotlight.toon.tags.length > 0 && (
+              <ul className="spotlight__tags">
+                {spotlight.toon.tags.slice(0, 4).map((tag) => (
+                  <li key={tag}>#{tag}</li>
+                ))}
+              </ul>
+            )}
+            <div className="spotlight__actions">
+              <Link className="btn btn--accent" to={`/series/${spotlight.toon.id}`}>
+                작품 보기
               </Link>
-            ))}
+              <Link
+                className="btn btn--ghost"
+                to={`/reader/${spotlight.toon.id}/${spotlight.episode.id}`}
+              >
+                최신화 · {spotlight.episode.label}
+              </Link>
+            </div>
           </div>
         </section>
       )}
 
-      {latest.length > 0 && (
-        <section className="section">
-          <h2 className="section__title">최신 업데이트</h2>
-          <div className="rail">
-            {latest.map(({ toon, episode }) => (
-              <Link
-                key={`${toon.id}-${episode.id}`}
-                className="rail-card"
-                to={`/reader/${toon.id}/${episode.id}`}
-              >
-                <div className="rail-card__thumb">
-                  <img src={assetUrl(episode.thumbnail)} alt={episode.title} loading="lazy" />
-                  <span className="rail-card__new">NEW</span>
-                </div>
-                <div className="rail-card__body">
-                  <p className="rail-card__toon">{toon.title}</p>
-                  <p className="rail-card__ep">{episode.label}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
 
       <section className="section">
         <div className="section__head">

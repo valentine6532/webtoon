@@ -2,6 +2,11 @@ import data from "../data/catalog.json";
 import type { Catalog, Episode, Webtoon } from "./types";
 
 export const catalog = data as Catalog;
+
+/** "무당들의 왕 (Mudang King)" → "무당들의 왕" */
+export function koTitle(title: string): string {
+  return title.replace(/\s*\([^)]*\)\s*$/, "").trim();
+}
 export const webtoons: Webtoon[] = catalog.webtoons;
 
 export function getWebtoon(id: string): Webtoon | undefined {
