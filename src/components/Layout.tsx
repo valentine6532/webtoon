@@ -1,13 +1,33 @@
+import { useEffect, useRef, useState } from "react";
 import { Link, Outlet, ScrollRestoration } from "react-router-dom";
 
+const BASE = import.meta.env.BASE_URL;
+
 export default function Layout() {
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    function onScroll() {
+      const y = window.scrollY;
+      setHeaderVisible(y < 60 || y < lastScrollY.current);
+      lastScrollY.current = y;
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="layout">
-      <header className="site-header">
+      <header className={`site-header${headerVisible ? "" : " site-header--hidden"}`}>
         <div className="site-header__inner">
           <Link className="brand" to="/">
-            <span className="brand__mark" aria-hidden="true">AI</span>
-            <span className="brand__name">AI 웹툰</span>
+            <img
+              className="brand__logo"
+              src={`${BASE}logo-out.png`}
+              alt="AI 웹툰"
+              height={48}
+            />
           </Link>
           <nav className="top-nav" aria-label="주요 메뉴">
             <Link to="/">홈</Link>

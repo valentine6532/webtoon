@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { adjacentEpisodes, getEpisode, getWebtoon, koTitle } from "../lib/catalog";
+import { adjacentEpisodes, episodesAscending, getEpisode, getWebtoon, koTitle } from "../lib/catalog";
 import {
   getReaderSize,
   READER_SIZES,
@@ -48,6 +48,10 @@ export default function Reader() {
 
   const { prev, next } = adjacentEpisodes(toon, episode.id);
 
+  const allEps = episodesAscending(toon);
+  const currentIdx = allEps.findIndex((e) => e.id === episode.id);
+  const epStrip = ([-2, -1, 0, 1, 2] as const).map((offset) => allEps[currentIdx + offset] ?? null);
+
   function changeSize(value: ReaderSize) {
     setSize(value);
     setReaderSize(value);
@@ -91,33 +95,70 @@ export default function Reader() {
         ))}
       </div>
 
-      <nav className="reader-nav">
-        {prev ? (
-          <button
-            type="button"
-            className="reader-nav__btn"
-            onClick={() => navigate(`/reader/${toon.id}/${prev.id}`)}
-          >
-            ← 이전화
-          </button>
-        ) : (
-          <span className="reader-nav__btn is-disabled">← 이전화</span>
-        )}
-        <Link className="reader-nav__btn reader-nav__btn--list" to={`/series/${toon.id}`}>
-          목록
-        </Link>
-        {next ? (
-          <button
-            type="button"
-            className="reader-nav__btn"
-            onClick={() => navigate(`/reader/${toon.id}/${next.id}`)}
-          >
-            다음화 →
-          </button>
-        ) : (
-          <span className="reader-nav__btn is-disabled">다음화 →</span>
-        )}
-      </nav>
+      <footer className="reader-footer">
+        {/* 이전화 / 다음화 큰 버튼 */}
+        <div className="reader-footer__nav">
+          {prev ? (
+            <button
+              type="button"
+              className="rf-nav rf-nav--prev"
+              onClick={() => navigate(`/reader/${toon.id}/${prev.id}`)}
+            >
+              <span className="rf-nav__arrow">←</span>
+              <span className="rf-nav__info">
+                <span className="rf-nav__label">{prev.label}</span>
+                <span className="rf-nav__title">{prev.title.replace(/^\d+화\s*·\s*/, "")}</span>
+              </span>
+            </button>
+          ) : (
+            <div className="rf-nav rf-nav--prev rf-nav--disabled" />
+          )}
+          {next ? (
+            <button
+              type="button"
+              className="rf-nav rf-nav--next"
+              onClick={() => navigate(`/reader/${toon.id}/${next.id}`)}
+            >
+              <span className="rf-nav__info">
+                <span className="rf-nav__label">{next.label}</span>
+                <span className="rf-nav__title">{next.title.replace(/^\d+화\s*·\s*/, "")}</span>
+              </span>
+              <span className="rf-nav__arrow">→</span>
+            </button>
+          ) : (
+            <div className="rf-nav rf-nav--next rf-nav--disabled" />
+          )}
+        </div>
+
+        {/* 에피소드 스트립 */}
+        <div className="reader-footer__strip">
+          <div className="rf-strip-head">
+            <span className="rf-strip-head__title">다른 회차</span>
+            <Link className="rf-strip-head__more" to={`/series/${toon.id}`}>목록 보기 →</Link>
+          </div>
+          <div className="rf-strip">
+            {epStrip.map((ep, i) =>
+              ep ? (
+                <button
+                  key={ep.id}
+                  type="button"
+                  className={`rf-strip__item${ep.id === episode.id ? " is-current" : ""}`}
+                  onClick={() => navigate(`/reader/${toon.id}/${ep.id}`)}
+                  aria-current={ep.id === episode.id ? "page" : undefined}
+                >
+                  <div className="rf-strip__thumb">
+                    <img src={assetUrl(ep.thumbnail)} alt="" loading="lazy" />
+                  </div>
+                  <p className="rf-strip__label">{ep.label}</p>
+                  <p className="rf-strip__title">{ep.title.replace(/^\d+화\s*·\s*/, "")}</p>
+                </button>
+              ) : (
+                <div key={i} className="rf-strip__item rf-strip__item--empty" />
+              )
+            )}
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

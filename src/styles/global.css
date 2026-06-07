@@ -29,6 +29,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html { overflow-y: scroll; }
 body {
   background: var(--bg);
   color: var(--ink);
@@ -54,6 +55,10 @@ button { font: inherit; cursor: pointer; }
   background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
+  transition: transform 0.28s ease;
+}
+.site-header--hidden {
+  transform: translateY(-100%);
 }
 .site-header__inner {
   max-width: var(--maxw);
@@ -67,24 +72,12 @@ button { font: inherit; cursor: pointer; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 18px;
-  letter-spacing: -0.02em;
 }
-.brand__mark {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  background: var(--c2);
-  color: var(--bg);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0;
+.brand__logo {
+  height: 48px;
+  width: auto;
+  display: block;
 }
-.brand__name { color: var(--ink); }
 .top-nav {
   display: flex;
   gap: 20px;
@@ -681,33 +674,135 @@ button { font: inherit; cursor: pointer; }
 .reader-strip--normal { max-width: 720px; }
 .reader-strip--wide   { max-width: 980px; }
 .reader-panel { width: 100%; height: auto; vertical-align: top; }
-.reader-nav {
+.reader-footer {
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+/* ─ 이전화 / 다음화 대형 버튼 ─ */
+.reader-footer__nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--line);
+}
+.rf-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.12s;
+  min-height: 72px;
+}
+.rf-nav:hover:not(.rf-nav--disabled) { background: var(--bg-hover); }
+.rf-nav--prev { border-right: 1px solid var(--line); justify-content: flex-start; }
+.rf-nav--next { justify-content: flex-end; text-align: right; }
+.rf-nav--disabled { cursor: default; }
+.rf-nav__arrow {
+  font-size: 20px;
+  color: var(--ink-faint);
+  flex: none;
+}
+.rf-nav__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.rf-nav--next .rf-nav__info { align-items: flex-end; }
+.rf-nav__label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--c2);
+  letter-spacing: 0.03em;
+}
+.rf-nav__title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+/* ─ 에피소드 스트립 ─ */
+.reader-footer__strip {
+  padding: 20px 16px 48px;
   max-width: 720px;
   margin: 0 auto;
-  padding: 28px 16px 56px;
+}
+.rf-strip-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 14px;
+}
+.rf-strip-head__title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.rf-strip-head__more {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c3);
+}
+.rf-strip-head__more:hover { opacity: 0.75; }
+.rf-strip {
+  display: flex;
   gap: 10px;
 }
-.reader-nav__btn {
+.rf-strip__item {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  padding: 6px 4px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
   text-align: center;
-  padding: 13px 10px;
-  border: 1px solid var(--line-mid);
-  border-radius: 10px;
-  background: var(--bg-card);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 14px;
-  transition: background 0.12s;
 }
-.reader-nav__btn:hover:not(.is-disabled) { background: var(--bg-hover); }
-.reader-nav__btn--list {
-  flex: 0 0 80px;
+.rf-strip__item:hover { background: var(--bg-hover); }
+.rf-strip__item.is-current {
+  border-color: var(--c2);
+  background: rgba(129, 140, 248, 0.07);
+}
+.rf-strip__item--empty { flex: 1; cursor: default; }
+.rf-strip__thumb {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-hover);
+}
+.rf-strip__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rf-strip__label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--c2);
+}
+.rf-strip__title {
+  margin: 0;
+  font-size: 11px;
   color: var(--ink-soft);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.reader-nav__btn.is-disabled { opacity: 0.28; cursor: default; }
 
 /* ─── NotFound ─── */
 .notfound { text-align: center; padding: 80px 20px; }
