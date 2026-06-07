@@ -669,7 +669,7 @@ button { font: inherit; cursor: pointer; }
   background: var(--c2);
   color: #fff;
 }
-.reader-strip { margin: 0 auto; display: block; }
+.reader-strip { margin: 0 auto; display: block; min-height: 100vh; }
 .reader-strip--small  { max-width: 480px; }
 .reader-strip--normal { max-width: 720px; }
 .reader-strip--wide   { max-width: 980px; }
