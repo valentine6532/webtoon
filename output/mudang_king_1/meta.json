@@ -1,5 +1,16 @@
 {
   "title": "무당들의 왕 (Mudang King)",
+  "author": "달밤 스튜디오",
+  "summary": "신병을 앓던 소년 '서진'은 도시의 어둠 속 떠도는 원혼들을 마주한다. 산 자와 죽은 자 사이, 그가 짊어진 운명의 무게.",
+  "tagline": "신병을 앓던 소년, 귀신을 베다",
+  "tags": ["액션", "오컬트"],
+  "day": "수",
+  "isNew": true,
+  "isUp": true,
+  "rating": 9.4,
+  "views": "61.2만",
+  "cover": ["#0EA5A0", "#0B2E33"],
+  "mono": "#5EEAD4",
   "episodes": {
     "episode01": "1화 · 무당들이 싫어하는 남자",
     "episode02": "2화 · 신병 장사"

@@ -19,10 +19,18 @@ export interface Webtoon {
   id: string;
   title: string;
   summary: string;
+  tagline: string;
   author: string;
   mainThumbnail: string;
   mainThumbnails: string[];
   tags: string[];
+  day: string;
+  isNew: boolean;
+  isUp: boolean;
+  rating: number | null;
+  views: string;
+  cover: string[];
+  mono: string;
   episodeCount: number;
   latestTitle: string;
   latestSortKey: string;
