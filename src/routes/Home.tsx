@@ -1,118 +1,112 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { allTags, koTitle, latestEpisodes, webtoons } from "../lib/catalog";
+import { koTitle, latestEpisodes, webtoons } from "../lib/catalog";
+import type { Webtoon } from "../lib/types";
 import { assetUrl } from "../lib/paths";
-import ToonCard from "../components/ToonCard";
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+      <path d="m20 20-3.2-3.2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function PlayIcon() {
+  return <svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 4.5v15l12-7.5z" fill="currentColor" /></svg>;
+}
+
+function WorkCard({ toon }: { toon: Webtoon }) {
+  return (
+    <Link className="card" to={`/series/${toon.id}`}>
+      <div className="card__poster">
+        <img src={assetUrl(toon.mainThumbnail)} alt={koTitle(toon.title)} loading="lazy" />
+      </div>
+      <div className="card__meta">
+        <div className="card__name">{koTitle(toon.title)}</div>
+        <div className="card__sub">{toon.author}</div>
+        {toon.tags.length > 0 && (
+          <div className="card__genres">
+            {toon.tags.slice(0, 3).map((tag) => (
+              <span key={tag} className="chip chip--ghost">#{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </Link>
+  );
+}
 
 export default function Home() {
   const [query, setQuery] = useState("");
-  const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
+
+  const featured = useMemo(() => latestEpisodes(1)[0]?.toon ?? webtoons[0] ?? null, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase("ko-KR");
-    return webtoons.filter((toon) => {
-      const matchesQuery =
-        !q ||
-        toon.title.toLocaleLowerCase("ko-KR").includes(q) ||
-        toon.tags.some((tag) => tag.toLocaleLowerCase("ko-KR").includes(q));
-      const matchesTags =
-        activeTags.size === 0 || toon.tags.some((tag) => activeTags.has(tag));
-      return matchesQuery && matchesTags;
-    });
-  }, [query, activeTags]);
-
-  const spotlight = useMemo(() => latestEpisodes(1)[0] ?? null, []);
-
-  function toggleTag(tag: string) {
-    setActiveTags((prev) => {
-      const next = new Set(prev);
-      next.has(tag) ? next.delete(tag) : next.add(tag);
-      return next;
-    });
-  }
+    if (!q) return webtoons;
+    return webtoons.filter(
+      (w) =>
+        w.title.toLocaleLowerCase("ko-KR").includes(q) ||
+        w.tags.some((tag) => tag.toLocaleLowerCase("ko-KR").includes(q))
+    );
+  }, [query]);
 
   return (
-    <div className="home">
-      {spotlight && (
-        <section className="spotlight">
-          <div className="spotlight__bg">
-            <img
-              className="spotlight__bg-img"
-              src={assetUrl(spotlight.toon.mainThumbnail)}
-              alt=""
-              aria-hidden="true"
-            />
-            <div className="spotlight__bg-overlay" />
-          </div>
-          <div className="spotlight__content">
-            <p className="spotlight__eyebrow">최신 업데이트</p>
-            <h1 className="spotlight__title">{koTitle(spotlight.toon.title)}</h1>
-            <p className="spotlight__author">{spotlight.toon.author}</p>
-            {spotlight.toon.summary && (
-              <p className="spotlight__summary">{spotlight.toon.summary}</p>
-            )}
-            {spotlight.toon.tags.length > 0 && (
-              <ul className="spotlight__tags">
-                {spotlight.toon.tags.slice(0, 4).map((tag) => (
-                  <li key={tag}>#{tag}</li>
-                ))}
-              </ul>
-            )}
-            <div className="spotlight__actions">
-              <Link className="btn btn--accent" to={`/series/${spotlight.toon.id}`}>
-                작품 보기
-              </Link>
-              <Link
-                className="btn btn--ghost"
-                to={`/reader/${spotlight.toon.id}/${spotlight.episode.id}`}
-              >
-                최신화 · {spotlight.episode.label}
-              </Link>
+    <div className="fade-enter">
+      <div className="wrap">
+        {featured && (
+          <div className="hero hero--split">
+            <div className="hero__text">
+              <div className="hero__eyebrow">최신 업데이트</div>
+              <h1 className="hero__title">{koTitle(featured.title)}</h1>
+              {featured.summary && <p className="hero__tag">{featured.summary}</p>}
+              <div className="hero__cta">
+                <Link className="btn btn--solid" to={`/series/${featured.id}`}>
+                  <PlayIcon /> 첫 화 보기
+                </Link>
+                <Link className="btn btn--ghost" to={`/series/${featured.id}`}>
+                  {featured.episodeCount}화 연재중
+                </Link>
+              </div>
+            </div>
+            <div className="hero__art">
+              <img src={assetUrl(featured.mainThumbnail)} alt={koTitle(featured.title)} />
             </div>
           </div>
+        )}
+
+        <section className="sec">
+          <div className="sec__head">
+            <div className="sec__title">
+              {query ? `'${query}' 검색 결과` : "전체 작품"}
+            </div>
+            <div className="sec-search">
+              <SearchIcon />
+              <input
+                type="search"
+                placeholder="작품·태그 검색"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="작품 검색"
+              />
+            </div>
+          </div>
+
+          {filtered.length > 0 ? (
+            <div className="grid">
+              {filtered.map((toon) => (
+                <WorkCard key={toon.id} toon={toon} />
+              ))}
+            </div>
+          ) : (
+            <div style={{ padding: "60px 0", textAlign: "center", color: "var(--ink-3)", fontWeight: 600 }}>
+              해당하는 작품이 없어요.
+            </div>
+          )}
         </section>
-      )}
-
-
-      <section className="section">
-        <div className="section__head">
-          <h2 className="section__title">전체 작품</h2>
-          <div className="search">
-            <input
-              type="search"
-              placeholder="작품·태그 검색"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-label="작품 검색"
-            />
-          </div>
-        </div>
-
-        {allTags.length > 0 && (
-          <div className="tag-filter">
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                type="button"
-                className={`tag-chip${activeTags.has(tag) ? " is-active" : ""}`}
-                onClick={() => toggleTag(tag)}
-              >
-                #{tag}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {filtered.length > 0 ? (
-          <div className="toon-grid">
-            {filtered.map((toon) => (
-              <ToonCard key={toon.id} toon={toon} />
-            ))}
-          </div>
-        ) : (
-          <p className="empty">검색 결과가 없습니다.</p>
-        )}
-      </section>
+      </div>
     </div>
   );
 }
