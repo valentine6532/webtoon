@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { koTitle, latestEpisodes, webtoons } from "../lib/catalog";
+import { allTags, koTitle, latestEpisodes, webtoons } from "../lib/catalog";
 import type { Webtoon } from "../lib/types";
 import { assetUrl } from "../lib/paths";
 
-const DAYS = ["전체", "월", "화", "수", "목", "금", "토", "일"];
 
 function SearchIcon() {
   return (
@@ -80,7 +79,7 @@ function RankItem({ toon, rank }: { toon: Webtoon; rank: number }) {
 }
 
 export default function Home() {
-  const [day, setDay] = useState("전체");
+  const [activeTag, setActiveTag] = useState("전체");
   const [query, setQuery] = useState("");
 
   const featured = useMemo(() => latestEpisodes(1)[0]?.toon ?? webtoons[0] ?? null, []);
@@ -92,10 +91,10 @@ export default function Home() {
         !q ||
         w.title.toLocaleLowerCase("ko-KR").includes(q) ||
         w.tags.some((t) => t.toLocaleLowerCase("ko-KR").includes(q));
-      const matchDay = day === "전체" || w.day === day;
-      return matchQuery && matchDay;
+      const matchTag = activeTag === "전체" || w.tags.includes(activeTag);
+      return matchQuery && matchTag;
     });
-  }, [query, day]);
+  }, [query, activeTag]);
 
   const ranked = useMemo(
     () => [...webtoons].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)),
@@ -153,22 +152,22 @@ export default function Home() {
                 type="search"
                 placeholder="작품·태그 검색"
                 value={query}
-                onChange={(e) => { setQuery(e.target.value); setDay("전체"); }}
+                onChange={(e) => { setQuery(e.target.value); setActiveTag("전체"); }}
                 aria-label="작품 검색"
               />
             </div>
           </div>
 
-          {/* Day tabs */}
+          {/* Tag tabs */}
           {!query && (
             <div className="days">
-              {DAYS.map((d) => (
+              {["전체", ...allTags].map((tag) => (
                 <button
-                  key={d}
-                  className={day === d ? "on" : ""}
-                  onClick={() => setDay(d)}
+                  key={tag}
+                  className={activeTag === tag ? "on" : ""}
+                  onClick={() => setActiveTag(tag)}
                 >
-                  {d === "전체" ? "전체" : d + "요일"}
+                  {tag}
                 </button>
               ))}
             </div>
