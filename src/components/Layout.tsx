@@ -22,7 +22,7 @@ export default function Layout() {
       <div className={`topbar${barVisible ? "" : " topbar--hidden"}`}>
         <div className="wrap topbar__in">
           <Link className="brand" to="/">
-            <img className="brand__logo" src={`${BASE}logo-out.png`} alt="AI 웹툰" />
+            <img className="brand__logo" src={`${BASE}logo2.png`} alt="AIToon" />
           </Link>
           <nav className="nav">
             <Link to="/">홈</Link>
@@ -38,7 +38,7 @@ export default function Layout() {
       <footer className="foot">
         <div className="wrap foot__row">
           <Link className="brand" to="/" style={{ fontSize: 17 }}>
-            <img src={`${BASE}logo-out.png`} alt="" style={{ height: 28 }} />
+            <img src={`${BASE}logo2.png`} alt="" style={{ height: 38 }} />
           </Link>
           <div>© 2026 AI 웹툰 포털 · 모든 회차는 자동 생성 콘텐츠입니다.</div>
         </div>
