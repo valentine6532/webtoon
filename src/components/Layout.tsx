@@ -37,9 +37,6 @@ export default function Layout() {
 
       <footer className="foot">
         <div className="wrap foot__row">
-          <Link className="brand" to="/" style={{ fontSize: 17 }}>
-            <img src={`${BASE}logo2.png`} alt="" style={{ height: 32 }} />
-          </Link>
           <div>© 2026 AIToon · 자동 생성 웹툰 큐레이션</div>
         </div>
       </footer>
