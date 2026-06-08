@@ -237,8 +237,9 @@ async function buildCatalog() {
     webtoons.push({
       id: toonName,
       title: meta.title || humanizeSlug(toonName),
-      summary: meta.summary || meta.description || "",
-      tagline: meta.tagline || "",
+      subtitle: meta.subtitle || "",
+      summary: meta.summary || meta.description || meta.subtitle || "",
+      tagline: meta.tagline || meta.subtitle || "",
       author: meta.author || "AI Studio",
       mainThumbnail: mainThumbnails[0] || latest.thumbnail,
       mainThumbnails: mainThumbnails.length ? mainThumbnails : [latest.thumbnail],

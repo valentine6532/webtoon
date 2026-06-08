@@ -18,6 +18,7 @@ export interface Episode {
 export interface Webtoon {
   id: string;
   title: string;
+  subtitle: string;
   summary: string;
   tagline: string;
   author: string;
