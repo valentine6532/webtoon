@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { allTags, koTitle, latestEpisodes, webtoons } from "../lib/catalog";
 import type { Webtoon } from "../lib/types";
@@ -120,8 +120,43 @@ export default function Home() {
   const [activeTag, setActiveTag] = useState("전체");
   const [query, setQuery] = useState("");
   const [trendingPage, setTrendingPage] = useState(0);
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [isHeroResetting, setIsHeroResetting] = useState(false);
 
-  const featured = useMemo(() => latestEpisodes(1)[0]?.toon ?? webtoons[0] ?? null, []);
+  const heroSlides = useMemo(() => {
+    const latestToons = latestEpisodes(8).map(({ toon }) => toon);
+    const unique = [...new Map(latestToons.map((toon) => [toon.id, toon])).values()];
+    return unique.length > 0 ? unique : webtoons;
+  }, []);
+  const activeHeroIndex = heroSlides.length > 0 ? heroIndex % heroSlides.length : 0;
+  const featured = heroSlides[activeHeroIndex] ?? heroSlides[0] ?? null;
+  const heroTrackSlides = heroSlides.length > 1 ? [...heroSlides, ...heroSlides] : heroSlides;
+
+  useEffect(() => {
+    if (heroSlides.length <= 1) return;
+    const timer = window.setInterval(() => {
+      setHeroIndex((index) => index + 1);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, [heroSlides.length]);
+
+  function goToHero(index: number) {
+    if (heroSlides.length <= 1) return;
+    const current = heroIndex % heroSlides.length;
+    const distance = (index - current + heroSlides.length) % heroSlides.length;
+    if (distance === 0) return;
+    setHeroIndex((value) => value + distance);
+  }
+
+  function handleHeroTransitionEnd() {
+    if (heroSlides.length <= 1 || heroIndex < heroSlides.length) return;
+    const normalized = heroIndex % heroSlides.length;
+    setIsHeroResetting(true);
+    setHeroIndex(normalized);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => setIsHeroResetting(false));
+    });
+  }
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase("ko-KR");
@@ -158,15 +193,23 @@ export default function Home() {
         {featured && (
           <div className="hero hero--split">
             <div className="hero__art">
-              <img src={assetUrl(featured.mainThumbnail)} alt={koTitle(featured.title)} />
+              <div
+                className={`hero__track${isHeroResetting ? " hero__track--resetting" : ""}`}
+                style={{ transform: `translateX(-${heroIndex * 100}%)` }}
+                onTransitionEnd={handleHeroTransitionEnd}
+              >
+                {heroTrackSlides.map((toon, index) => (
+                  <div className="hero__slide" key={`${toon.id}-${index}`}>
+                    <img src={assetUrl(toon.mainThumbnail)} alt={koTitle(toon.title)} />
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="hero__text">
               <div className="hero__eyebrow">최신 업데이트</div>
               <h1 className="hero__title">{koTitle(featured.title)}</h1>
               <p className="hero__tag">{featured.tagline || featured.summary}</p>
               <div className="hero__meta">
-                <span>{featured.author}</span>
-                <span>{featured.episodeCount}화</span>
                 {featured.rating != null && <span>평점 {featured.rating}</span>}
               </div>
               <div className="hero__cta">
@@ -174,10 +217,24 @@ export default function Home() {
                   <PlayIcon /> 첫 화 보기
                 </Link>
                 <Link className="btn btn--ghost" to={`/series/${featured.id}`}>
-                  최신화 · {featured.episodeCount}화
+                  최신화 보기
                 </Link>
               </div>
             </div>
+            {heroSlides.length > 1 && (
+              <div className="hero__dots" aria-label="히어로 작품 선택">
+                {heroSlides.map((toon, index) => (
+                  <button
+                    key={toon.id}
+                    type="button"
+                    className={index === activeHeroIndex ? "is-active" : ""}
+                    aria-label={`${koTitle(toon.title)} 보기`}
+                    aria-current={index === activeHeroIndex ? "true" : undefined}
+                    onClick={() => goToHero(index)}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         )}
 
@@ -185,11 +242,11 @@ export default function Home() {
         {ranked.length > 0 && (
           <section className="sec">
             <div className="sec__head">
-              <div className="sec__title">인기 급상승</div>
-              <div className="rank-nav" aria-label="인기 급상승 페이지 이동">
+              <div className="sec__title">지금 뜨는 작품</div>
+              <div className="rank-nav" aria-label="지금 뜨는 작품 페이지 이동">
                 <button
                   type="button"
-                  aria-label="이전 인기 급상승"
+                  aria-label="이전 지금 뜨는 작품"
                   onClick={() => setTrendingPage((page) => Math.max(0, page - 1))}
                   disabled={trendingPage === 0}
                 >
@@ -197,7 +254,7 @@ export default function Home() {
                 </button>
                 <button
                   type="button"
-                  aria-label="다음 인기 급상승"
+                  aria-label="다음 지금 뜨는 작품"
                   onClick={() => setTrendingPage((page) => Math.min(mobileTrendingPageCount - 1, page + 1))}
                   disabled={trendingPage >= mobileTrendingPageCount - 1}
                 >
