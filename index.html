@@ -11,15 +11,13 @@
     <div id="root"></div>
     <script type="module">
       const isGithubPages = location.hostname.endsWith("github.io");
-      const assetVersion = "20260609-0209";
-
       if (isGithubPages) {
         const stylesheet = document.createElement("link");
         stylesheet.rel = "stylesheet";
-        stylesheet.href = `/webtoon/assets/index.css?v=${assetVersion}`;
+        stylesheet.href = "/webtoon/assets/main-DCLuOKdE.css";
         document.head.appendChild(stylesheet);
 
-        const entryModule = `/webtoon/assets/main.js?v=${assetVersion}`;
+        const entryModule = "/webtoon/assets/main-D0-VdNLO.js";
         import(entryModule);
       } else {
         import("/src/main.tsx");
