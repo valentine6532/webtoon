@@ -26,6 +26,18 @@ function PlayIcon() {
   return <svg viewBox="0 0 24 24" width="18" height="18"><path d="M7 4.5v15l12-7.5z" fill="currentColor" /></svg>;
 }
 
+function ChevronIcon({ direction }: { direction: "prev" | "next" }) {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+      {direction === "prev" ? (
+        <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      ) : (
+        <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      )}
+    </svg>
+  );
+}
+
 function WorkCard({ toon }: { toon: Webtoon }) {
   return (
     <Link className="card" to={`/series/${toon.id}`}>
@@ -57,30 +69,57 @@ function WorkCard({ toon }: { toon: Webtoon }) {
   );
 }
 
+function EmptyWorkCard() {
+  return (
+    <div className="card card--empty" aria-hidden="true">
+      <div className="card__poster card__poster--empty" />
+      <div className="card__meta">
+        <div className="card__name">준비 중</div>
+        <div className="card__sub">새 작품</div>
+      </div>
+    </div>
+  );
+}
+
 function RankItem({ toon, rank }: { toon: Webtoon; rank: number }) {
   return (
     <Link className="rank__item" to={`/series/${toon.id}`}>
-      <div className="rank__num">{rank}</div>
       <div className="rank__thumb">
         <img src={assetUrl(toon.mainThumbnail)} alt={koTitle(toon.title)} loading="lazy" />
+        <div className="rank__num">{rank}</div>
       </div>
       <div className="rank__body">
         <div className="rank__name">{koTitle(toon.title)}</div>
         <div className="rank__sub">
-          {toon.tags.join(" · ")}
-          {toon.views ? ` · 조회 ${toon.views}` : ""}
+          {toon.rating != null && (
+            <span className="rating"><StarIcon />{toon.rating}</span>
+          )}
+          {toon.rating != null && toon.author && <span>· </span>}
+          <span>{toon.author}</span>
         </div>
       </div>
-      {toon.rating != null && (
-        <span className="rating"><StarIcon />{toon.rating}</span>
-      )}
     </Link>
+  );
+}
+
+function EmptyRankItem({ rank }: { rank: number }) {
+  return (
+    <div className="rank__item rank__item--empty" aria-hidden="true">
+      <div className="rank__thumb rank__thumb--empty">
+        <div className="rank__num">{rank}</div>
+      </div>
+      <div className="rank__body">
+        <div className="rank__name">준비 중</div>
+        <div className="rank__sub">새 작품</div>
+      </div>
+    </div>
   );
 }
 
 export default function Home() {
   const [activeTag, setActiveTag] = useState("전체");
   const [query, setQuery] = useState("");
+  const [trendingPage, setTrendingPage] = useState(0);
 
   const featured = useMemo(() => latestEpisodes(1)[0]?.toon ?? webtoons[0] ?? null, []);
 
@@ -100,6 +139,17 @@ export default function Home() {
     () => [...webtoons].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)),
     []
   );
+  const visibleTrendingSlots = 7;
+  const trendingPlaceholders = Math.max(0, visibleTrendingSlots - ranked.length);
+  const mobileTrendingSlots = 3;
+  const mobileTrendingPageCount = Math.ceil(visibleTrendingSlots / mobileTrendingSlots);
+  const mobileTrendingStart = trendingPage * mobileTrendingSlots;
+  const mobileTrendingItems = ranked.slice(mobileTrendingStart, mobileTrendingStart + mobileTrendingSlots);
+  const mobileTrendingPlaceholders = Math.max(
+    0,
+    Math.min(mobileTrendingSlots, visibleTrendingSlots - mobileTrendingStart) - mobileTrendingItems.length
+  );
+  const workPlaceholders = Math.max(0, 10 - filtered.length);
 
   return (
     <div className="fade-enter">
@@ -107,10 +157,18 @@ export default function Home() {
         {/* Hero */}
         {featured && (
           <div className="hero hero--split">
+            <div className="hero__art">
+              <img src={assetUrl(featured.mainThumbnail)} alt={koTitle(featured.title)} />
+            </div>
             <div className="hero__text">
               <div className="hero__eyebrow">최신 업데이트</div>
               <h1 className="hero__title">{koTitle(featured.title)}</h1>
               <p className="hero__tag">{featured.tagline || featured.summary}</p>
+              <div className="hero__meta">
+                <span>{featured.author}</span>
+                <span>{featured.episodeCount}화</span>
+                {featured.rating != null && <span>평점 {featured.rating}</span>}
+              </div>
               <div className="hero__cta">
                 <Link className="btn btn--solid" to={`/series/${featured.id}`}>
                   <PlayIcon /> 첫 화 보기
@@ -120,21 +178,47 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="hero__art">
-              <img src={assetUrl(featured.mainThumbnail)} alt={koTitle(featured.title)} />
-            </div>
           </div>
         )}
 
-        {/* Ranking */}
+        {/* Trending */}
         {ranked.length > 0 && (
           <section className="sec">
             <div className="sec__head">
-              <div className="sec__title">랭킹</div>
+              <div className="sec__title">인기 급상승</div>
+              <div className="rank-nav" aria-label="인기 급상승 페이지 이동">
+                <button
+                  type="button"
+                  aria-label="이전 인기 급상승"
+                  onClick={() => setTrendingPage((page) => Math.max(0, page - 1))}
+                  disabled={trendingPage === 0}
+                >
+                  <ChevronIcon direction="prev" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="다음 인기 급상승"
+                  onClick={() => setTrendingPage((page) => Math.min(mobileTrendingPageCount - 1, page + 1))}
+                  disabled={trendingPage >= mobileTrendingPageCount - 1}
+                >
+                  <ChevronIcon direction="next" />
+                </button>
+              </div>
             </div>
-            <div className="rank">
-              {ranked.map((toon, i) => (
+            <div className="rank rank--desktop">
+              {ranked.slice(0, visibleTrendingSlots).map((toon, i) => (
                 <RankItem key={toon.id} toon={toon} rank={i + 1} />
+              ))}
+              {Array.from({ length: trendingPlaceholders }, (_, i) => (
+                <EmptyRankItem key={`empty-rank-${i}`} rank={ranked.length + i + 1} />
+              ))}
+            </div>
+            <div className="rank rank--mobile">
+              {mobileTrendingItems.map((toon, i) => (
+                <RankItem key={toon.id} toon={toon} rank={mobileTrendingStart + i + 1} />
+              ))}
+              {Array.from({ length: mobileTrendingPlaceholders }, (_, i) => (
+                <EmptyRankItem key={`empty-mobile-rank-${trendingPage}-${i}`} rank={mobileTrendingStart + mobileTrendingItems.length + i + 1} />
               ))}
             </div>
           </section>
@@ -178,6 +262,10 @@ export default function Home() {
               {filtered.map((toon) => (
                 <WorkCard key={toon.id} toon={toon} />
               ))}
+              {!query && activeTag === "전체" &&
+                Array.from({ length: workPlaceholders }, (_, i) => (
+                  <EmptyWorkCard key={`empty-work-${i}`} />
+                ))}
             </div>
           ) : (
             <div style={{ padding: "60px 0", textAlign: "center", color: "var(--ink-3)", fontWeight: 600 }}>
