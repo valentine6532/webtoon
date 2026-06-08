@@ -54,6 +54,9 @@ function serveOutput() {
 
 export default defineConfig({
   base: BASE,
+  server: {
+    allowedHosts: ["divide-scope-sims-black.trycloudflare.com"]
+  },
   plugins: [react(), serveOutput()],
   build: {
     outDir: "dist",

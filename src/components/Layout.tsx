@@ -38,7 +38,7 @@ export default function Layout() {
       <footer className="foot">
         <div className="wrap foot__row">
           <Link className="brand" to="/" style={{ fontSize: 17 }}>
-            <img src={`${BASE}logo2.png`} alt="" style={{ height: 38 }} />
+            <img src={`${BASE}logo2.png`} alt="" style={{ height: 32 }} />
           </Link>
           <div>© 2026 AI 웹툰 포털 · 모든 회차는 자동 생성 콘텐츠입니다.</div>
         </div>
