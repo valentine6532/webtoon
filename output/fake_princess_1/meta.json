@@ -1,20 +1,14 @@
 {
   "title": "거짓의 왕관 (False Crown)",
-  "author": "AI Studio",
-  "summary": "몰락한 가문의 영애 '레아'는 죽은 황녀를 대신해 황궁에 들어선다. 모두를 속여야만 살아남는 거짓의 왕관 아래, 그녀는 진짜 권력의 맛을 알게 된다.",
-  "tagline": "왕좌를 향한 가장 우아한 거짓말",
-  "tags": ["로맨스", "궁중"],
-  "day": "월",
-  "isNew": true,
-  "isUp": true,
-  "rating": 9.7,
-  "views": "128.4만",
-  "cover": ["#7C3AED", "#3B1C66"],
-  "mono": "#FBBF24",
+  "tags": [
+    "궁중암투",
+    "서스펜스",
+    "성장"
+  ],
   "episodes": {
     "episode01": "1화 · 얼굴값",
     "episode02": "2화 · 죽은 왕녀를 살려라",
-    "episode03": "3화 · 첫 번째 거짓말",
-    "episode04": "4화 · 의심의 눈"
+    "episode03": "3화 · 왕녀 만들기",
+    "episode04": "4화 · 흰 장미"
   }
 }
