@@ -6,6 +6,13 @@ const outputDir = path.join(root, "output");
 const dataDir = path.join(root, "src", "data");
 const catalogPath = path.join(dataDir, "catalog.json");
 const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
+const imagePreference = new Map([
+  [".jpg", 0],
+  [".jpeg", 1],
+  [".webp", 2],
+  [".png", 3],
+  [".gif", 4]
+]);
 
 function toWebPath(filePath) {
   return path.relative(root, filePath).replaceAll(path.sep, "/");
@@ -73,10 +80,22 @@ async function listDirs(dir) {
 async function listImages(dir) {
   try {
     const entries = await fs.readdir(dir, { withFileTypes: true });
-    return entries
+    const images = entries
       .filter((e) => e.isFile() && imageExtensions.has(path.extname(e.name).toLowerCase()))
       .map((e) => path.join(dir, e.name))
       .sort((a, b) => naturalCompare(path.basename(a), path.basename(b)));
+
+    const byStem = new Map();
+    for (const file of images) {
+      const ext = path.extname(file).toLowerCase();
+      const stem = path.join(path.dirname(file), path.basename(file, ext));
+      const current = byStem.get(stem);
+      if (!current || (imagePreference.get(ext) ?? 99) < (imagePreference.get(path.extname(current).toLowerCase()) ?? 99)) {
+        byStem.set(stem, file);
+      }
+    }
+
+    return [...byStem.values()].sort((a, b) => naturalCompare(path.basename(a), path.basename(b)));
   } catch {
     return [];
   }
