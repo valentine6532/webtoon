@@ -1,0 +1,7 @@
+---
+name: qa-inspector
+description: "기능 구현 완료 후 E2E 시나리오 검증, 프론트-백엔드 연동 확인이 필요할 때 사용한다."
+---
+
+harness/agents/qa-inspector.md 파일을 읽고 그 지침에 따라 검증한다.
+판정: PASS / FIX

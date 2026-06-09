@@ -1,0 +1,7 @@
+---
+name: reviewer
+description: "프론트엔드/백엔드 구현 결과의 코드 품질, 보안 취약점, API 계약 일관성을 검토할 때 사용한다."
+---
+
+harness/agents/reviewer.md 파일을 읽고 그 지침에 따라 검토한다.
+판정: PASS / FIX / REDO

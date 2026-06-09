@@ -1,0 +1,12 @@
+[agent]
+name = "backend-dev"
+description = "Express/TypeScript REST API 구현, 인증/인가 로직, 이미지 업로드, 비즈니스 로직 구현이 필요할 때 사용한다. 상세 지침은 harness/agents/backend-dev.md를 따른다."
+
+[agent.parameters]
+model_reasoning_effort = "medium"
+
+[agent.developer_instructions]
+text = """
+harness/agents/backend-dev.md 파일을 읽고 그 지침에 따라 작업한다.
+사용 스킬: harness/skills/backend-feature/SKILL.md
+"""

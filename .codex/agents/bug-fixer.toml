@@ -1,0 +1,13 @@
+[agent]
+name = "bug-fixer"
+description = "빌드 실패, 런타임 에러, 테스트 실패, reviewer의 FIX/REDO 판정이 있을 때 사용한다. 상세 지침은 harness/agents/bug-fixer.md를 따른다."
+
+[agent.parameters]
+model_reasoning_effort = "high"
+
+[agent.developer_instructions]
+text = """
+harness/agents/bug-fixer.md 파일을 읽고 그 지침에 따라 작업한다.
+사용 스킬: harness/skills/autonomous-bugfix/SKILL.md
+harness/bugfix/ 디렉터리에 00~03 순서로 기록한다.
+"""

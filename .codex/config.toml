@@ -1,0 +1,9 @@
+[project]
+name = "webtoon-platform"
+description = "웹툰 게시 플랫폼 — 작가 업로드 + 독자 열람 풀스택 서비스"
+
+[harness]
+canonical_agents = "harness/agents/"
+canonical_skills = "harness/skills/"
+bugfix_log      = "harness/bugfix/"
+workspace       = "_workspace/"
