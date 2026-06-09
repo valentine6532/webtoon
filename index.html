@@ -4,24 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" type="image/png" href="favicon.png?v=20260609-0158" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=20260609-0158" />
     <title>AIToon</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module">
-      const isGithubPages = location.hostname.endsWith("github.io");
-      if (isGithubPages) {
-        const stylesheet = document.createElement("link");
-        stylesheet.rel = "stylesheet";
-        stylesheet.href = "/webtoon/assets/main-DptSu0wx.css";
-        document.head.appendChild(stylesheet);
-
-        const entryModule = "/webtoon/assets/main-ItTatea_.js";
-        import(entryModule);
-      } else {
-        import("/src/main.tsx");
-      }
-    </script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
