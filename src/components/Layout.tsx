@@ -37,7 +37,7 @@ export default function Layout() {
 
       <footer className="foot">
         <div className="wrap foot__row">
-          <div>© 2026 AIToon · 자동 생성 웹툰 큐레이션</div>
+          <div>© 2026 AIToon · AI 오리지널 웹툰 플랫폼</div>
         </div>
       </footer>
 
